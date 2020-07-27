@@ -1,0 +1,10 @@
+fieldname	index	bbt	fg	smiles
+data type	int	int	str	str
+list mark		;	;	
+comment		BBT FG indexes	BBT FG names	smiles
+value	0	0;0;1	NO_FG;NO_FG;ALDEHYDES	[13CH3]OCCC=O
+value	1	0;0;2	NO_FG;NO_FG;ALKYNES_TERMINAL	[13CH3]OCCC#C
+value	2	0;0;3	NO_FG;NO_FG;AMINES_ALIPHATIC_SECONDARY	[13CH3]OCCNC
+value	3	0;0;4	NO_FG;NO_FG;AZIDE	[13CH3]OCCN=N#N
+value	4	0;0;5	NO_FG;NO_FG;CARBOXYLIC_ACIDS	[13CH3]OCC(=O)O
+value	5	0;0;21	NO_FG;NO_FG;AMINES_ALIPHATIC_PRIMARY	[13CH3]OCCN
