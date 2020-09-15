@@ -1,7 +1,7 @@
 
 LRL_edesigner_core
 
-eDESIGNER is an algorithm used to enumerate comprehensively DNA encoded library designs and select the ones giving a minimum number of library members that fulfill at the same time a pre-defined heavy atom distribution profile.
+eDESIGNER is an algorithm used to enumerate comprehensively DNA encoded library designs and select the ones giving a minimum number of library members that fulfill at the same time a pre-defined heavy atom distribution profile. Detailed explanation of eDESIGNER can be found in Martín, A., Nicolaou, C.A. & Toledo, M.A. Navigating the DNA encoded libraries chemical space. Commun Chem 3, 127 (2020). https://doi.org/10.1038/s42004-020-00374-1.
 
 edesigner_core is a suit of scripts written in python. We have used eDESIGNER with the following dependencies: python 3.6.5, rdkit 2017.09.3, pandas 0.23.4 and numpy 1.15.1. All other modules are custom written and provided within the package. The scripts were run in a linux workstation with 8 processors running redhat enterprise linux version 7.6.
 
