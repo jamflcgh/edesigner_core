@@ -22,6 +22,7 @@ from classes.parameter_reader import Parameters
 from classes.desalter import SmilesDesalter
 from classes.mol_property_calculator import MolPropertyCalculator
 from classes.parallel import map_parallel
+from classes.parallel import starmap_parallel
 
 # Functions definitions
 
@@ -50,7 +51,8 @@ def calculate_fg(row, fgsum, fgsub):
     for fg in fgsub:
         count -= row[fg]
     return count
-def calculate_fg_parallel(df):
+
+def calculate_fg_parallel(df, calcfg):
     """This function takes a pandas data frame and applies the calculate_fg function to it
     df : pandas dataframe
     returns : df (pandas dataframe)"""
@@ -70,7 +72,7 @@ def desalt_smiles(row, smilesfield, desalter):
         return np.nan
     return smiles
 
-def desalt_smiles_parallel(df):
+def desalt_smiles_parallel(df, desalter):
     """This function takes a pandas data frame and applies the desalt_smiles function to it
     df : pandas dataframe
     returns : df (pandas dataframe)"""
@@ -90,7 +92,7 @@ def calculate_natoms(row, smilesfield, calculator):
     else:
         return natoms
 
-def calculate_natoms_parallel(df):
+def calculate_natoms_parallel(df, calculator):
     """This function takes a pandas data frame and applies the calculate_natoms function to it
     df : pandas dataframe
     returns : out_df (pandas dataframe)"""
@@ -125,7 +127,7 @@ def clasify(row, BBTs, fg):
     else:
         return np.nan
 
-def clasify_parallel(df):
+def clasify_parallel(df, BBTs, fg):
     """This function takes a pandas data frame and applies the clasify function to it
     df : pandas dataframe
     returns : df (pandas dataframe)"""
@@ -145,20 +147,21 @@ def modify_natoms(row, BBTs, fg):
         return np.nan
     return n_atoms
 
-def modify_natoms_parallel(df):
+def modify_natoms_parallel(df, BBTs, fg):
     """This function takes a pandas data frame and applies the modify_natoms function to it
     df : pandas dataframe
     returns : df (pandas dataframe)"""
-    df['N_ATOMS'] = df.apply(modify_natoms, args = (BBTs, fg), axis = 1)
+    df['N_ATOMS'] = df.apply(modify_natoms, args=(BBTs, fg), axis=1)
     return df
 
-def read_compounds(db=None, BBTs=None, calcfg=None, antifg=None):
+def read_compounds(db=None, BBTs=None, fg=None, desalter=None, calculator=None, calcfg=None, antifg=None, log=None):
     """This function reads all databases in the dbpar parameters objec and
     classifies each compound to its BBT. Smiles are desalted and number of
     heavy atoms calculated for each compound. The compounds not classified are
     removed and duplicates consolidated in a single compound.
     db : instance of the Parameters class (database parameters)
     BBTs list of instances of the BBT class
+    fg: instance of the Parameters class (fg parameters)
     calcfg : instance of the Parameters class (calcfg parameters)
     antifg : isntance of the Parameters class (antifg parameters)
     returns : comp (pandas dataframe)"""
@@ -166,8 +169,8 @@ def read_compounds(db=None, BBTs=None, calcfg=None, antifg=None):
     for db_index, database in enumerate(db.par):
         # read file to dataframe and rename ccolumns
         log.update('Reading ' + database['db'] + ' collection ...')
-        separator = {'tab' : '\t', 'space' : ' ', 'comma' : ','}[database['separator']]
-        df_chunk = pd.read_csv(os.path.join(database['path'], database['filename']), sep = separator, chunksize = 1000000)
+        separator = {'tab': '\t', 'space': ' ', 'comma': ','}[database['separator']]
+        df_chunk = pd.read_csv(os.path.join(database['path'], database['filename']), sep=separator, chunksize=1000000)
         this_com = None
         for i, df in enumerate(df_chunk):
             log.update('Processing chunk ' + str(i+1) + ' with ' + str(df.shape[0]) + ' records...')
@@ -191,33 +194,38 @@ def read_compounds(db=None, BBTs=None, calcfg=None, antifg=None):
                 df = df[df[database['mw_name']] < database['mw_filter']].copy()
                 log.update('    ' + str(len(df)) + ' records remained after filtering by mw')
             # calculate calculated fgs
-            df = map_parallel(df, calculate_fg_parallel)
+            args = (calcfg,)
+            df = starmap_parallel(df, calculate_fg_parallel, args=args)
             # filter by antifg
             for afg in antifg.par:
                 if df.shape[0] > 0:
                     df = df[df[afg['name']] == 0].copy()
             log.update('    ' + str(len(df)) + ' records remained after filtering by antidel FGs')
             # clasify compounds and filter by classification
-            df = map_parallel(df, clasify_parallel)
+            args = (BBTs, fg)
+            df = starmap_parallel(df, clasify_parallel, args=args)
             df.dropna(inplace=True, subset=['BBT'])
             df['BBT'] = df['BBT'].astype('int32')
             log.update('    ' + str(len(df)) + ' records remained after filtering by belonging to a BBT')
             # desalt smiles
-            df = map_parallel(df, desalt_smiles_parallel)
+            args = (desalter,)
+            df = starmap_parallel(df, desalt_smiles_parallel, args=args)
             df.dropna(inplace=True, subset=['SMILES'])
             log.update('    ' + str(len(df)) + ' records remained after desalting smiles')
             # count n_atoms
-            df = map_parallel(df, calculate_natoms_parallel)
+            args = (calculator,)
+            df = starmap_parallel(df, calculate_natoms_parallel, args=args)
             df.dropna(inplace=True, subset=['N_ATOMS'])
             log.update('    ' + str(len(df)) + ' records remained after removing molecules with incalculable n atoms')
             # reduce columns
             df = df[['ID', 'SMILES', 'SOURCE', 'EXTERNAL', 'BBT', 'N_ATOMS', 'QUANTITY']].copy()
             # modify n_atoms
-            df = map_parallel(df, modify_natoms_parallel)
+            args = (BBTs, fg)
+            df = starmap_parallel(df, modify_natoms_parallel, args=args)
             df.dropna(inplace=True, subset=['N_ATOMS'])
             log.update('    ' + str(len(df)) + ' records remained after removing molecules with incalculable excess n atoms')
-            df = df[df['N_ATOMS'] >= dbpar.par[db_index]['na_filter'][0]].copy() #filter BBs where the number of atoms is outside the established range
-            df = df[df['N_ATOMS'] < dbpar.par[db_index]['na_filter'][1]].copy()
+            df = df[df['N_ATOMS'] >= db.par[db_index]['na_filter'][0]].copy() #filter BBs where the number of atoms is outside the established range
+            df = df[df['N_ATOMS'] < db.par[db_index]['na_filter'][1]].copy()
             log.update('    ' + str(len(df)) + ' records remained after removing compounds with excess natoms')
             # append dataframe to this_master dataframe
             if this_com is None:
@@ -261,49 +269,49 @@ def report_compound_files(comp_path, comp, BBTs):
                 dfi.to_csv(os.path.join(comp_path, str(BBT.index)+ '.int.smi'), sep = ' ', index = False, header = False)
     return None
 
-
-if __name__ == '__main__':
-
-    parser = argparse.ArgumentParser(description = """e_bbt_creator:
-    This script searches the files of annotated compounds and classifies all compounds
-    into the building block type (BBT) they belong to, or discard them if they do not belong
-    to a specific BBT.
-    The script starts generating by comprehension all building block types as a combination of
-    up to three compatible functional groups (FGs).
-    Once the list of BBTs are set the compounds from different collections are classified and
-    duplicates, compounds which smiles string cannot be parsed with rdkit or compounds not belonging to
-    any BBT are eliminated.
-    The effective number of atoms (number of atoms minus the number of atoms that will be lost upon
-    reaction) of each building block is calculatede, and the building blocks corresponding to
-    each BBT stored in a file.
-    Two files per BBT are created, one containing all building blocks corresponding to that BBT and the
-    other containing building blocks in internal collections only.
-    The characteristics of each BBT are stored in an object. This includes number of BBs containing each
-    possible number of atoms, functional groups corresponding to this BBT etc, and a list of all BBTs
-    is stored in a file for further use. The name of the list is BBTs and is used throughout all scripts
-    in eDESIGNER.
-    """)
+def parse_args():
+    parser = argparse.ArgumentParser(description="""e_bbt_creator:
+        This script searches the files of annotated compounds and classifies all compounds
+        into the building block type (BBT) they belong to, or discard them if they do not belong
+        to a specific BBT.
+        The script starts generating by comprehension all building block types as a combination of
+        up to three compatible functional groups (FGs).
+        Once the list of BBTs are set the compounds from different collections are classified and
+        duplicates, compounds which smiles string cannot be parsed with rdkit or compounds not belonging to
+        any BBT are eliminated.
+        The effective number of atoms (number of atoms minus the number of atoms that will be lost upon
+        reaction) of each building block is calculatede, and the building blocks corresponding to
+        each BBT stored in a file.
+        Two files per BBT are created, one containing all building blocks corresponding to that BBT and the
+        other containing building blocks in internal collections only.
+        The characteristics of each BBT are stored in an object. This includes number of BBs containing each
+        possible number of atoms, functional groups corresponding to this BBT etc, and a list of all BBTs
+        is stored in a file for further use. The name of the list is BBTs and is used throughout all scripts
+        in eDESIGNER.
+        """)
     parser.add_argument('-wf', '--wfolder', help='Working Folder', type=str, default='./')
     args = parser.parse_args()
+    return args
 
+def intialization(wfolder):
     # Initialization
     error_found = False
     tic = time.time()
-    path = Parameters(os.path.join(args.wfolder, 'PAR/path.par'), fsource = 'dict', how = 'to_dict', multiple = False)
-    log = Logger(os.path.join(args.wfolder, 'logs', 'e_bbt_creator.log'), prepend_timestamp=True)
-    dbpar = Parameters(os.path.join(args.wfolder, 'resources', 'db.par'), fsource='list', how='to_list', multiple=True)
-    par = Parameters(os.path.join(args.wfolder, 'resources', 'par.par'), fsource='dict', how='to_dict', multiple=False)
-    fg = Parameters(os.path.join(args.wfolder, 'resources', 'fg.par'), fsource='list', how='to_list', multiple=True)
-    calcfg = Parameters(os.path.join(args.wfolder, 'resources', 'calcfg.par'), fsource='list', how='to_list', multiple=True)
-    antifg = Parameters(os.path.join(args.wfolder, 'resources', 'antifg.par'), fsource='list', how='to_list', multiple=True)
-    headpieces = Parameters(os.path.join(args.wfolder, 'resources', 'headpieces.par'), fsource='list', how='to_list', multiple=True)
-    log.update(version)
-    log.insert_file_in_log(os.path.join(args.wfolder, 'resources', 'db.par'), 'db parameters')
-    log.insert_file_in_log(os.path.join(args.wfolder, 'resources', 'par.par'), 'par parameters')
-    log.insert_file_in_log(os.path.join(args.wfolder, 'resources', 'fg.par'), 'fg parameters')
-    log.insert_file_in_log(os.path.join(args.wfolder, 'resources', 'calcfg.par'), 'calcfg parameters')
-    log.insert_file_in_log(os.path.join(args.wfolder, 'resources', 'antifg.par'), 'antifg parameters')
-    log.insert_file_in_log(os.path.join(args.wfolder, 'resources', 'headpieces.par'), 'headpieces parameters')
+    path = Parameters(os.path.join(wfolder, 'resources', 'path.par'), fsource='dict', how='to_dict', multiple=False)
+    log = Logger(os.path.join(wfolder, 'logs', 'e_bbt_creator.log'), prepend_timestamp=True)
+    dbpar = Parameters(os.path.join(wfolder, 'resources', 'db.par'), fsource='list', how='to_list', multiple=True)
+    par = Parameters(os.path.join(wfolder, 'resources', 'par.par'), fsource='dict', how='to_dict', multiple=False)
+    fg = Parameters(os.path.join(wfolder, 'resources', 'fg.par'), fsource='list', how='to_list', multiple=True)
+    calcfg = Parameters(os.path.join(wfolder, 'resources', 'calcfg.par'), fsource='list', how='to_list', multiple=True)
+    antifg = Parameters(os.path.join(wfolder, 'resources', 'antifg.par'), fsource='list', how='to_list', multiple=True)
+    headpieces = Parameters(os.path.join(wfolder, 'resources', 'headpieces.par'), fsource='list', how='to_list',
+                            multiple=True)
+    log.insert_file_in_log(os.path.join(wfolder, 'resources', 'db.par'), 'db parameters')
+    log.insert_file_in_log(os.path.join(wfolder, 'resources', 'par.par'), 'par parameters')
+    log.insert_file_in_log(os.path.join(wfolder, 'resources', 'fg.par'), 'fg parameters')
+    log.insert_file_in_log(os.path.join(wfolder, 'resources', 'calcfg.par'), 'calcfg parameters')
+    log.insert_file_in_log(os.path.join(wfolder, 'resources', 'antifg.par'), 'antifg parameters')
+    log.insert_file_in_log(os.path.join(wfolder, 'resources', 'headpieces.par'), 'headpieces parameters')
     desalter = SmilesDesalter()
     calculator = MolPropertyCalculator()
     for item in [dbpar, par, fg, calcfg, antifg, headpieces]:
@@ -316,42 +324,70 @@ if __name__ == '__main__':
     # Body of the script
     if not error_found:
         log.update('Creating db run folder...')
-        comps_path = os.path.join(args.wfolder, 'comps', log.strtimestamp)
-        command = f'[ ! -d {comps_path} ] && mkdir {comps_path}'
-        os.system(command)
-        files_list = [f for f in os.listdir(comps_path)]
-        for file_item in files_list:
+        comps_path = os.path.join(wfolder, 'comps', log.strtimestamp)
+        if not os.path.isdir(comps_path):
+            os.mkdir(comps_path)
+        for file_item in os.listdir(comps_path):
             os.remove(os.path.join(comps_path, file_item))
 
-        # Generates the list of all BBTs by comprehension ignoring incompatible BBTs but including [0, 0, 0]
-        log.update('Generating BB types...')
-        BBT_list = [[i, j, k] for i in range(len(fg.par)) for j in range(i, len(fg.par)) for k in range(j, len(fg.par)) if compatible([i, j, k], fg)]
-        BBTs = [BBT(BBT=BBT_list[i], fg=fg, headpieces=headpieces, index=i) for i in range(len(BBT_list))]
+    return tic, path, log, dbpar, par, fg, calcfg, antifg, headpieces, desalter, calculator, comps_path
 
-        # read compound sets and get valid compounds within valid BBTs
-        log.update('Reading compound sets...')
-        comp = read_compounds(db=dbpar, BBTs=BBTs, calcfg=calcfg, antifg=antifg)
+def generate_bbts(fg, headpieces, log):
+    # Generates the list of all BBTs by comprehension ignoring incompatible BBTs but including [0, 0, 0]
+    log.update('Generating BB types...')
+    BBT_list = [[i, j, k] for i in range(len(fg.par)) for j in range(i, len(fg.par)) for k in range(j, len(fg.par)) if
+                compatible([i, j, k], fg)]
+    BBTs = [BBT(BBT=BBT_list[i], fg=fg, headpieces=headpieces, index=i) for i in range(len(BBT_list))]
+    return BBTs
 
-        # update BBTs
-        log.update('Updating BBTs...')
-        for i in range(len(BBTs)):
-            BBTs[i].update(comp)
-        BBTs.sort(key = lambda X: X.n_compounds[-1], reverse = True)
-        BBTs.sort(key = lambda X: X.BBT_multi)
-        for i in range(len(BBTs)):
-            BBTs[i].order = i
-        BBTs.sort(key = lambda X: X.index)
+def update_bbs(BBTs, comp, log):
+    # update BBTs
+    log.update('Updating BBTs...')
+    for i in range(len(BBTs)):
+        BBTs[i].update(comp)
+    BBTs.sort(key=lambda X: X.n_compounds[-1], reverse=True)
+    BBTs.sort(key=lambda X: X.BBT_multi)
+    for i in range(len(BBTs)):
+        BBTs[i].order = i
+    BBTs.sort(key=lambda X: X.index)
+    return BBTs
 
-        # reporting files
-        log.update('Reporting compound files...')
-        report_compound_files(comps_path, comp, BBTs)
-        log.update('pickling BBTs object...')
-        with open(os.path.join(args.wfolder, 'data', log.strtimestamp + '_BBTs.pic'), 'wb') as f:
-            pic.dump(BBTs, f, -1)
-        log.update('Reporting BBTs file...')
-        comp['FGs'] = comp.apply(lambda row: ';'.join([BBTs[row['BBT']].BBT_name[i] for i in range(3)]), axis=1)
-        comp.to_csv(os.path.join(args.wfolder, 'data', log.strtimestamp + '_BBT_report.csv'), index=False)
-        # time and end the program
-        tac = time.time()
-        log.update(f'Run time = {round((tac - tic) / 60.0, 1)} min')
-        log.update('OK')
+def report_files(log, comps_path, comp, BBTs, wfolder):
+    """This function generate the compound files (BBTs.pic and BBT_report.csv), using log, comps_path, comp, BBTs and
+     wfolder as arguments
+     log: an instance of Logger class
+     comps_path: str: path to the file with the compounds
+     comp: pd dataframe
+     BBTs: list of BBT class instances
+     wfolder: str: path to the working folder
+     Returns: None"""
+    log.update('Reporting compound files...')
+    report_compound_files(comps_path, comp, BBTs)
+    log.update('pickling BBTs object...')
+    with open(os.path.join(args.wfolder, 'data', log.strtimestamp + '_BBTs.pic'), 'wb') as f:
+        pic.dump(BBTs, f, -1)
+    log.update('Reporting BBTs file...')
+    comp['FGs'] = comp.apply(lambda row: ';'.join(BBTs[row['BBT']].BBT_name), axis=1)
+    comp.to_csv(os.path.join(wfolder, 'data', log.strtimestamp + '_BBT_report.csv'), index=False)
+
+if __name__ == '__main__':
+
+    #Main body of the script
+    args = parse_args()
+    tic, path, log, dbpar, par, fg, clalcfg, antifg, headpieces, desalter, calculator, comps_path = intialization(args.wfolder)
+    log.update(version)
+    BBTs = generate_bbts(fg, headpieces, log)
+
+    # read compound sets and get valid compounds within valid BBTs
+    log.update('Reading compound sets...')
+    comp = read_compounds(db=dbpar, BBTs=BBTs, fg=fg, desalter=desalter, calculator=calculator, calcfg=calcfg,
+                          antifg=antifg, log=log)
+    BBTs = uptade_bbts(BBTs, comp, log)
+
+    # reporting files
+    report_files(log, comps_path, comp, BBTs, args.wfolder)
+
+    # time and end the program
+    tac = time.time()
+    log.update(f'Run time = {round((tac - tic) / 60.0, 1)} min')
+    log.update('OK')

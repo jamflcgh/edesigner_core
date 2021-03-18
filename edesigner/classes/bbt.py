@@ -17,16 +17,17 @@ class BBT:
         index : int (BBT identifier)
         returns : None"""
         self.BBT = BBT
-        self.BBT_long=[0 for x in range(len(fg.par))]
+        self.BBT_long = [0 for _ in range(len(fg.par))]
         for i in self.BBT:
             self.BBT_long[i] += 1
         self.BBT_name = [fg.par[i]['name'] for i in self.BBT]
         self.BBT_multi = sum([0 if i == 0 else 1 for i in self.BBT])
-        self.n_compounds = [0 for j in range(100)]
-        self.n_internal = [0 for j in range(100)]
-        self.n_external = [0 for j in range(100)]
+        self.n_compounds = [0 for _ in range(100)]
+        self.n_internal = [0 for _ in range(100)]
         self.smiles_example = None
+        self.n_external = [0 for _ in range(100)]
         self.headpiece = None
+        self.min_atoms = 0
         for item in headpieces.par:
             if self.BBT == item['bbt']:
                 self.headpiece = item['index']
@@ -38,7 +39,7 @@ class BBT:
         compounds dataframe
         com : pandas dataframe containing classified compounds
         returns : None"""
-        df = comp[comp['BBT'] == self.index]
+        df = comp[comp['BBT'] == self.index].copy()
         if df.shape[0] > 0:
             for index, row in df.iterrows():
                 self.n_compounds[row['N_ATOMS']] += 1

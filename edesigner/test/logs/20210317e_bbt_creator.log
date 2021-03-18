@@ -1,0 +1,161 @@
+log file created on: Wed Mar 17 22:50:54 2021
+
+db parameters
+
+fieldname	db	path	filename	id_name	smiles_name	separator	rb_name	mw_name	quantity_name	mw_filter	rb_filter	na_filter	quantity_filter	external_db
+data type	str	str	str	str	str	str	str	str	str	float	int	int	float	bool
+list mark												;		
+comment	name given to the collection	folder where the collection file is stored	collection file name	name of the header of the column containing the compound id	name of the header containing the smiles string for the compound	separator between fields (comma, tab or space)	name of the column containing the number of rotatable bonds of the compound	name of the column containing the molecular weight of the compound	name of the column containing the quantity of the compound  (or Null if no such column exists)	maximum molecular weight allowed (or Null if no such filter)	maximum number of rotatable bonds allowed (or Null if not such filter)	range of acceptable number of atoms (or Null if not such filter)	minimum quantity allowed (or Null if not such filter)	Whether the collection is external or internal
+value	Enamine1272	./dbs/	reduced1272_enaminebb.txt	NAME	SMILES	space	W_ROTBOND	W_AMW	Null	1000	10	4;25	Null	False
+value	Enamine1272	./dbs/	reduced1272_enaminebb.txt	NAME	SMILES	space	W_ROTBOND	W_AMW	Null	1000	10	4;25	Null	True
+
+
+par parameters
+
+fieldname	data type	list mark	comment	value
+percentile	float		percentile of the library containing only compounds with number of atoms less than max_na_percentile (0.5 means median)	0.5
+max_na_percentile	int		number of atoms limit of final compounds in the library for which percentile fraction of compounds in the library will have less than that number of atoms	29
+max_na_absolute	int		maximum number of atoms allowed for any compound belonging to the library	39
+max_cycle_na	int	;	maximum number of atoms allowed for any compound at the end of at the end of each cycle	25;32;39
+max_scaffolds_na	int		maximum number of atoms coming from scaffods for each libDESIGN	14
+headpiece_na	int		Number of atoms accounted for the headpiece	4
+min_count	int		Minimum member of compounds in the library required to select the libDESIGN	100
+include_designs	str		(PRODUCTION, BOTH) Which classes of reactions can be included (only oproduction or both production and development)	BOTH
+rb_filter	float		Threshold of effective rotatable bonds allowed in BBs (rotatable bonds after elimination of those coming from protecting groups and rotatable bonds lost in the reaction)	4
+designs_in_memory	int		Number of designs that can be held in memory to expand to the next cycle	20000
+final_compounds_folder	str		Name of the folder containing BB files that will be passed to the configuration file	<compounds_folder>/
+final_reactions_folder	str		Name of the folder containing reaction files that will be passed to the configuration file.	<reactions_folder>/
+
+
+fg parameters
+
+fieldname	index	name	stable	self_incompatibility	excess_rb	allowed_end_exposed	atom_dif
+data type	int	str	int	int	int	bool	int
+list mark				;			
+comment		FG name	stable on DNA	Incompatibility list	rotable bonds lost upon reaction in a typical reaction	The functional group can be exposed in the final library molecules	Number of atoms lost upon a typical reaction
+value	0	NO_FG	1	-1	0	True	0
+value	1	ALDEHYDES	1	1	0	False	-1
+value	2	ALKYNES_TERMINAL	1	2;37	0	True	0
+value	3	AMINES_ALIPHATIC_SECONDARY	1	21;3;23;22;37;27;24;25;29;38;39;26;10;11;13;41	0	True	0
+value	4	AZIDE	1	4	0	False	0
+value	5	CARBOXYLIC_ACIDS	1	5	0	True	0
+value	6	THIOLS	1	37;9;7;24;25;29;15;10;11;13;6;30	0	True	0
+value	7	calc_THIOPHENOLS	1	37;9;7;24;25;29;15;38;39;11;6;41	0	True	0
+value	8	calc_NITRO	1	8	0	True	-1
+value	9	calc_PHENOLS	1	37;9;7;24;25;29;15;38;39;11;6;41	0	True	0
+value	10	SEC_FMOC	1	3;7;27;10;13;6	3	True	-17
+value	11	SULFONYL_CHLORIDES	0	31;32;21;3;23;22;9;7;33;34;35;36;27;24;25;29;15;38;39;26;11;6;41	0	False	-1
+value	12	BORONICS_AROMATIC	0	20;12;19;26;40	0	False	-5
+value	13	TERT_FMOC	1	3;7;10;13;6	3	True	-17
+value	14	ESTERS_METHYL_ETHYL	1	14	0	True	-2
+value	15	NITRO_FLUORO	1	21;3;37;7;33;34;35;36;27;24;25;29;15;38;39;11;6;41	0	False	-2
+value	16	SEC_BOC	1	16;17	2	True	-7
+value	17	TERT_BOC	1	16;17	2	True	-7
+value	18	O_NITRO_SEC_ANILINE	1	18	0	True	-1
+value	19	calc_ARYLIODIDE	1	20;12;19;40	0	True	-1
+value	20	ARYLBROMIDE	1	20;12;19;40	0	True	-1
+value	21	AMINES_ALIPHATIC_PRIMARY	1	21;3;23;22;37;27;24;25;29;38;39;26;10;11;13;41	0	True	0
+value	22	calc_AMINES_AROMATIC_PRIMARY	1	21;3;23;22;37;27;24;25;29;38;39;26;11;41	0	True	0
+value	23	AMINES_HETEROAROMATIC_PRIMARY	1	21;3;23;22;37;27;24;25;29;38;39;26;11;41;30	0	True	0
+value	24	ISOCYANATES	0	21;3;23;22;37;7;33;34;35;36;27;24;25;29;15;38;39;26;40;11;6;41	0	False	0
+value	25	ISOTHIOCYANATES	0	21;3;23;22;37;7;33;34;35;36;27;24;25;29;15;38;39;26;40;11;6;41	0	False	0
+value	26	O_IODO_ANILINE	1	21;3;23;22;7;27;24;25;29;38;39;26;11;41	0	True	-1
+value	27	HYDRAZINES_PRIMARY	1	28;1;21;3;23;22;37;27;24;25;29;38;39;10;11;13;41	0	False	0
+value	28	A_H_KETONES	1	28	0	True	-1
+value	29	KETONES_A_BROMO	0	21;3;23;37;7;33;34;35;36;27;24;25;29;15;38;39;26;11;6;41	0	False	-2
+value	30	YNONES	1	37;7;27;24;25;29;15;6;30	0	False	-1
+value	31	AMIDINES_PRIMARY	1	31;32;11	0	True	0
+value	32	AMIDINES_SECONDARY	1	31;32;11	0	True	0
+value	33	GUANIDINES_SECONDARY_PRIMARY	1	37;33;34;35;36;24;25;29;11;41	0	True	0
+value	34	GUANIDINES_SECONDARY_SECONDARY	1	37;33;34;35;36;24;25;29;11;41	0	True	0
+value	35	GUANIDINES_TERTIARY_PRIMARY	1	37;33;34;35;36;24;25;29;11;41	0	True	0
+value	36	GUANIDINES_TERTIARY_SECONDARY	1	37;33;34;35;36;24;25;29;11;41	0	True	0
+value	37	calc_NAS_ELECTROPHILE	1	21;3;23;22;37;9;7;27;24;25;29;15;38;39;26;11;6;41;42	0	False	-1
+value	38	O_AMINO_PHENOLS	1	21;3;23;22;37;9;7;27;24;25;29;38;39;26;11;6;41	0	True	0
+value	39	O_AMINO_THIOPHENOLS	1	21;3;23;22;37;7;27;24;25;29;38;39;26;11;6;41	0	True	0
+value	40	O_IODO_SEC_ANILINE	1	20;19;40	0	True	-1
+value	41	TRIAZINE_DICHLORO	1	21;3;23;22;37;9;7;33;34;35;36;27;24;25;29;15;38;39;11;6;41	0	False	-2
+value	42	TRIAZINE_MONOCHLORO	1	37;42	0	False	-1
+
+
+calcfg parameters
+
+fieldname	index	name	rule_add	rule_substract
+data type	int	str	str	str
+list mark			;	;
+comment		Calculated FG name	higher level FGs	Lower level FGs
+value	0	calc_EXCLUDED_BORONICS	BORONICS;TRIFLUOROBORATES	BORONICS_AROMATIC
+value	1	calc_NITRO	NITRO	NITRO_FLUORO;O_NITRO_SEC_ANILINE
+value	2	calc_ARYLIODIDE	ARYLIODIDE	O_IODO_ANILINE;O_IODO_SEC_ANILINE
+value	3	calc_AMINES_AROMATIC_PRIMARY	AMINES_AROMATIC_PRIMARY	O_IODO_ANILINE;O_AMINO_PHENOLS;O_AMINO_THIOPHENOLS
+value	4	calc_KETONES	KETONES	YNONES;KETONES_A_BROMO;A_H_KETONES
+value	5	calc_AMIDINES	AMIDINES	AMIDINES_PRIMARY;AMIDINES_SECONDARY
+value	6	calc_GUANIDINES	GUANIDINES	GUANIDINES_SECONDARY_PRIMARY;GUANIDINES_SECONDARY_SECONDARY;GUANIDINES_TERTIARY_PRIMARY;GUANIDINES_TERTIARY_SECONDARY
+value	7	calc_PHENOLS	PHENOLS	O_AMINO_PHENOLS
+value	8	calc_THIOPHENOLS	THIOPHENOLS	O_AMINO_THIOPHENOLS
+value	9	calc_NAS_ELECTROPHILE	NAS_ELECTROPHILE	TRIAZINE_TRICHLORO;TRIAZINE_TRICHLORO;TRIAZINE_TRICHLORO;TRIAZINE_DICHLORO;TRIAZINE_DICHLORO;TRIAZINE_MONOCHLORO;NITRO_FLUORO
+value	10	calc_AMINES_AROMATIC_SECONDARY	AMINES_AROMATIC_SECONDARY	O_NITRO_SEC_ANILINE;O_IODO_SEC_ANILINE
+value	11	calc_NNH2	NNH2	HYDRAZINES_PRIMARY
+value	12	calc_HYDRAZINES	HYDRAZINES	HYDRAZINES_PRIMARY
+value	13	calc_HALIDES_ALKYL	HALIDES_ALKYL	KETONES_A_BROMO
+
+
+antifg parameters
+
+fieldname	index	name
+data type	int	str
+list mark		
+comment		Funcitonal group names (or ccalculated FG names) used to eliminate building blocks
+value	0	KETAL
+value	1	ACETAL
+value	2	ACID_CHLORIDES
+value	3	ALKENE
+value	4	ALKENE_ACTIVATED
+value	5	ALKENE_NON_ACTIVATED
+value	6	ALKYL_SULFUR_PYRIMIDINE
+value	7	ALKYNES_INTERNAL_NON_ACTIVATED
+value	8	calc_HALIDES_ALKYL
+value	9	HALIDES_BENZYL
+value	10	SEC_ANILINE_BOC
+value	11	BORONICS_ALIPHATIC
+value	12	TRIFLUOROBORATES
+value	13	DICARBONYL_IMIDE
+value	14	DISULFIDE
+value	15	PRIM_ANILINE_FMOC
+value	16	SEC_ANILINE_FMOC
+value	17	TRITYL
+value	18	IMINES
+value	19	ISOCYANIDES
+value	20	ISOTOPE
+value	21	HALOALKENE
+value	22	NHYDROXYAMIDES
+value	23	calc_NNH2
+value	24	calc_HYDRAZINES
+value	25	HYDRAZIDES
+value	26	NONORGANIC
+value	27	NVOC
+value	28	OXIME
+value	29	PHOSPHORUS
+value	30	SULFONIC_ACIDS
+value	31	TETRAZOLE
+value	32	calc_EXCLUDED_BORONICS
+value	33	calc_KETONES
+value	34	calc_AMIDINES
+value	35	calc_GUANIDINES
+value	36	calc_AMINES_AROMATIC_SECONDARY
+
+
+headpieces parameters
+
+fieldname	index	bbt	fg	smiles
+data type	int	int	str	str
+list mark		;	;	
+comment		BBT FG indexes corresponding to the BBT to whcich the headpiece belongs	BBT FG names of the BBT corresponding to the BBT the headpiece belongs	smiles representing the headpiece for enumeration of examples
+value	0	0;0;1	NO_FG;NO_FG;ALDEHYDES	[13CH3]OCCC=O
+value	1	0;0;2	NO_FG;NO_FG;ALKYNES_TERMINAL	[13CH3]OCCC#C
+value	2	0;0;3	NO_FG;NO_FG;AMINES_ALIPHATIC_SECONDARY	[13CH3]OCCNC
+value	3	0;0;4	NO_FG;NO_FG;AZIDE	[13CH3]OCCN=N#N
+value	4	0;0;5	NO_FG;NO_FG;CARBOXYLIC_ACIDS	[13CH3]OCC(=O)O
+value	5	0;0;21	NO_FG;NO_FG;AMINES_ALIPHATIC_PRIMARY	[13CH3]OCCN
+
+Creating db run folder...

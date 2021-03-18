@@ -1,0 +1,25 @@
+log file created on: Thu Mar 18 10:06:19 2021
+Reading Enamine1272 collection ...
+Processing chunk 1 with 1272 records...
+    1260 records remained after filtering by rb
+    1260 records remained after filtering by mw
+    1102 records remained after filtering by antidel FGs
+    2 records remained after filtering by belonging to a BBT
+    2 records remained after desalting smiles
+    2 records remained after removing molecules with incalculable n atoms
+    2 records remained after removing molecules with incalculable excess n atoms
+    2 records remained after removing compounds with excess natoms
+    2 records remained after pooling chunks
+Reading Enamine1272 collection ...
+Processing chunk 1 with 1272 records...
+    1260 records remained after filtering by rb
+    1260 records remained after filtering by mw
+    1102 records remained after filtering by antidel FGs
+    2 records remained after filtering by belonging to a BBT
+    2 records remained after desalting smiles
+    2 records remained after removing molecules with incalculable n atoms
+    2 records remained after removing molecules with incalculable excess n atoms
+    2 records remained after removing compounds with excess natoms
+    2 records remained after pooling chunks
+A total of 4 records before combination and elimination of duplicates
+A total of 2 records remained after combination and elimination of duplicates

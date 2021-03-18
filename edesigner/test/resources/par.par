@@ -1,0 +1,13 @@
+fieldname	data type	list mark	comment	value
+percentile	float		percentile of the library containing only compounds with number of atoms less than max_na_percentile (0.5 means median)	0.5
+max_na_percentile	int		number of atoms limit of final compounds in the library for which percentile fraction of compounds in the library will have less than that number of atoms	29
+max_na_absolute	int		maximum number of atoms allowed for any compound belonging to the library	39
+max_cycle_na	int	;	maximum number of atoms allowed for any compound at the end of at the end of each cycle	25;32;39
+max_scaffolds_na	int		maximum number of atoms coming from scaffods for each libDESIGN	14
+headpiece_na	int		Number of atoms accounted for the headpiece	4
+min_count	int		Minimum member of compounds in the library required to select the libDESIGN	100
+include_designs	str		(PRODUCTION, BOTH) Which classes of reactions can be included (only oproduction or both production and development)	BOTH
+rb_filter	float		Threshold of effective rotatable bonds allowed in BBs (rotatable bonds after elimination of those coming from protecting groups and rotatable bonds lost in the reaction)	4
+designs_in_memory	int		Number of designs that can be held in memory to expand to the next cycle	20000
+final_compounds_folder	str		Name of the folder containing BB files that will be passed to the configuration file	<compounds_folder>/
+final_reactions_folder	str		Name of the folder containing reaction files that will be passed to the configuration file.	<reactions_folder>/
