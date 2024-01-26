@@ -1,0 +1,16 @@
+(0 Reaction
+  (A C Comment "prepare_nitro-fluoro_as_electronucleophile-aniline")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/nitro_fluoro.qry")
+    (A I break_bond (0 1))
+    (A I remove_fragment 0)
+    (A I break_bond (3 4))
+    (A I remove_fragment 4)
+    (A I break_bond (3 5))
+    (A I remove_fragment 5)
+    (A I formal_charge (3 0))
+    (A I isotope (1 $isotope_1))
+    (A I isotope (3 $isotope_2))
+  )
+)
+

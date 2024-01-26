@@ -1,0 +1,22 @@
+# This query hits for hetero-atoms and halogen in 1 ring
+# This query wont hit heteroatoms in two separate fused rings 
+
+name: "Cl/F_6R_2N_ortho_to_1N"
+query {
+  name: "Cl/F -> N_6ring"
+  smarts: "[Cl,F]-[/IWgid8c].[/IWgid8n].[/IWgid8a]" 
+  unique_embeddings_only: true
+  one_embedding_per_start_atom: true
+  ring_specifier {
+    base {
+      set_global_id: 8
+      environment: "1na-[F,Cl]&&[n,o,s]"
+      environment_can_match_in_ring_atoms: true       
+      min_heteroatom_count: 2
+    }
+    aromatic: true  
+    fused: 0
+    fused: 1
+  }
+}
+

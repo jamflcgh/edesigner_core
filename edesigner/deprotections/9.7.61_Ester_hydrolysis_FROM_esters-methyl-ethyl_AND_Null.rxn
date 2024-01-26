@@ -1,0 +1,9 @@
+(0 Reaction
+  (A C Comment "ester_hydrolisis")
+  (0 Scaffold
+     (A C query_file "${EDESIGNER_QUERIES}/ester.qry")
+     (A I break_bond (1 2))
+     (A I remove_fragment 2)
+  )
+)
+

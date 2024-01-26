@@ -1,0 +1,6 @@
+(0 Query
+  (A I version 2)
+  (A C Comment "alkynes_activated")
+  (A I embeddings_do_not_overlap 1)
+  (A C smarts "[C;$([CH]),$(C[#6])]#C-[$(C=O),$(S=O),$(C#N)]")
+)

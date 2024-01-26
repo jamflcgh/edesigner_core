@@ -1,0 +1,13 @@
+(0 Composite_Query
+  (A I version 2)
+  (A C Comment "nitro_fluoro")
+  (A I one_embedding_per_start_atom 1)
+  (0 Query
+    (A I version 2)
+    (A C smarts "Fc1c(-[0N](=O)=O)aaaa1")
+  )
+  (1 Query
+    (A I version 2)
+    (A C smarts "Fc1c(-[0N+](=O)-[O-])aaaa1")
+  )
+)

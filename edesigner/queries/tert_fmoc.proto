@@ -1,0 +1,6 @@
+name: "tert_fmoc"
+query {
+  one_embedding_per_start_atom: true
+  smarts: "[0N](C(=O)O[CH2][CH]1c2[cH][cH][cH][cH]c2-c3c1[cH][cH][cH][cH]3)([C;!$(C=,#[*])])[C;!$(C=,#[*])]"
+}
+

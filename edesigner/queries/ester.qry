@@ -1,0 +1,5 @@
+(0 Query
+  (A I version 2)
+  (A C Comment "ester_methyl_ethyl")
+  (A C smarts "[0C]([0O][0C;$([CH3]),$([CH2][CH3])])(=[O])[#6]")
+)

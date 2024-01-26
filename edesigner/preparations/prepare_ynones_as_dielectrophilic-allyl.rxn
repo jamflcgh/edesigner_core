@@ -1,0 +1,13 @@
+(0 Reaction
+  (A C Comment "prepare_ynones_as_pyrazole")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/ynones.qry")
+    (A I break_bond (0 1))
+    (A I remove_fragment 0)
+    (A I double_bond (1 3))
+    (A I single_bond (3 4))
+    (A I isotope (4 $isotope_1))
+    (A I isotope (1 $isotope_2))
+  )
+)
+

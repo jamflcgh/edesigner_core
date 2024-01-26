@@ -1,0 +1,8 @@
+(0 Query
+  (A I version 2)
+  (A C Comment "alkynes_terminal")
+  (A C smarts "[0CH]#C[#6;!$(C=[O,S,N])]")
+)
+
+
+

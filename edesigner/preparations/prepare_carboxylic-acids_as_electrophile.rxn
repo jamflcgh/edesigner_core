@@ -1,0 +1,10 @@
+(0 Reaction
+  (A C Comment "prep_carboxylic-acids_as_electrophile")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/carboxylic_acids.qry")
+    (A I break_bond (0 1))
+    (A I remove_fragment 0)
+    (A I isotope (1 $isotope_1))
+  )
+)
+

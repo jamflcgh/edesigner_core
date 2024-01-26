@@ -1,0 +1,8 @@
+(0 Reaction
+  (A C Comment "prepare_thiols-or-thiophenols_as_nucleophile")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/thiols_or_thiophenols.qry")
+    (A I isotope (0 $isotope_1))
+  )
+)
+

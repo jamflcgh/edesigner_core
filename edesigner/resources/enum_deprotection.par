@@ -1,17 +1,18 @@
-fieldname	index	enum_name
-data type	int	str
-list mark		
-comment		Enumeration reaction name
-value	0	NO_DEPROTECTION
-value	1	3.3.2_Bromo_Sonogashira_coupling_FROM_arylbromide_AND_Null.rxn
-value	2	3.3.4_Iodo_Sonogashira_coupling_FROM_aryliodide_AND_Null.rxn
-value	3	6.1.1_N-Boc_deprotection_FROM_boc_AND_Null.rxn
-value	4	6.1.6_N-Fmoc_deprotection_FROM_fmoc_AND_Null.rxn
-value	5	7.1.1_Nitro_to_amino_FROM_nitro_AND_Null.rxn
-value	6	9.7.61_Ester_hydrolysis_FROM_esters_methyl_ethyl_AND_Null.rxn
-value	7	9.7.8_Amino_to_guanidino_FROM_amines_aliphatic_AND_Null.rxn
-value	8	X.X.X_Triazine_Dichloro_FROM_amines_aliphatic_AND_Null.rxn
-value	9	X.X.X_Esters_methyl_ethyl_WITH_Amines_FROM_aldehydes_AND_Null.rxn
-value	10	X.X.X_Nitro_fluoro_FROM_amines_aliphatic_AND_Null.rxn
-value	11	X.X.X_O_nitro_sec_aniline_WITH_Carboxylic_acid_FROM_amines_aliphatic_primary_AND_Null.rxn
-value	12	X.X.X_O_iodo_aniline_FROM_amines_aliphatic_AND_Null.rxn
+fieldname	index	enum_name	enum_rxn
+data type	int	str	str
+list mark
+comment		Enumeration reaction name	Enumeration reaction name
+value	0	NO_DEPROTECTION	NO_DEPROTECTION
+value	1	3.3.2_Sonogashira_coupling_FROM_arylhalide_AND_Null.rxn	${DEPROTECTION_FOLDER}/3.3.2_Sonogashira_coupling_FROM_arylhalide_AND_Null.rxn
+value	2	6.1.1_N-Boc_deprotection_FROM_boc_AND_Null.rxn	${DEPROTECTION_FOLDER}/6.1.1_N-Boc_deprotection_FROM_boc_AND_Null.rxn
+value	3	6.1.6_N-Fmoc_deprotection_FROM_fmoc_AND_Null.rxn	${DEPROTECTION_FOLDER}/6.1.6_N-Fmoc_deprotection_FROM_fmoc_AND_Null.rxn
+value	4	7.1.1_Nitro_to_amino_FROM_nitro_AND_Null.rxn	${DEPROTECTION_FOLDER}/7.1.1_Nitro_to_amino_FROM_nitro_AND_Null.rxn
+value	5	9.7.61_Ester_hydrolysis_FROM_esters-methyl-ethyl_AND_Null.rxn	${DEPROTECTION_FOLDER}/9.7.61_Ester_hydrolysis_FROM_esters-methyl-ethyl_AND_Null.rxn
+value	6	9.7.8_Amino_to_guanidino_FROM_amines-aliphatic_AND_Null.rxn	${DEPROTECTION_FOLDER}/9.7.8_Amino_to_guanidino_FROM_amines-aliphatic_AND_Null.rxn
+value	7	X.X.X_Triazine-Dichloro_FROM_amines-aliphatic_AND_Null.rxn	${DEPROTECTION_FOLDER}/X.X.X_Triazine-Dichloro_FROM_amines-aliphatic_AND_Null.rxn
+value	8	X.X.X_Esters-methyl-ethyl_WITH_Amines_FROM_aldehydes_AND_Null.rxn	${DEPROTECTION_FOLDER}/X.X.X_Esters-methyl-ethyl_WITH_Amines_FROM_aldehydes_AND_Null.rxn
+value	9	X.X.X_Nitro-fluoro_FROM_amines-aliphatic_AND_Null.rxn	${DEPROTECTION_FOLDER}/X.X.X_Nitro-fluoro_FROM_amines-aliphatic_AND_Null.rxn
+value	10	X.X.X_O-nitro-sec-aniline_WITH_Carboxylic-acid_FROM_amines-aliphatic-primary_AND_Null.rxn	${DEPROTECTION_FOLDER}/X.X.X_O-nitro-sec-aniline_WITH_Carboxylic-acid_FROM_amines-aliphatic-primary_AND_Null.rxn
+value	11	X.X.X_O-iodo-aniline_FROM_amines-aliphatic_AND_Null.rxn	${DEPROTECTION_FOLDER}/X.X.X_O-iodo-aniline_FROM_amines-aliphatic_AND_Null.rxn
+value	12	X.X.X_Triazine-Dichloro_FROM_boc_AND_Null.prxn	${DEPROTECTION_FOLDER}/X.X.X_Triazine-Dichloro_FROM_boc_AND_Null.prxn
+value	13	X.X.X_Triazine-Dichloro_FROM_fmoc_AND_Null.prxn	${DEPROTECTION_FOLDER}/X.X.X_Triazine-Dichloro_FROM_fmoc_AND_Null.prxn

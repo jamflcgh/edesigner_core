@@ -1,0 +1,7 @@
+fieldname	data type	list mark	comment	value
+min_bb_na	int		minimum number of atoms supplied by a given building block (this filters bbs while being red from the source file)	4
+max_bb_na	int		maximum number of atoms supplied by a given building block (this filters bbs while being red from the source file)	20
+rb_filter	float		Threshold for rot bonds of BBs to be incorporated while reading the db (once the excess rb is deduced)	5
+raw_na_filter	float		maximum molecular weight allowed in raw BB (or Null if no such filter)	60
+raw_rb_filter	int		maximum number of rotatable bonds allowed (or Null if not such filter)	10
+raw_quantity_filter	float		minimum quantity allowed (or Null if not such filter)	0.01

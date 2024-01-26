@@ -1,0 +1,5 @@
+name: "amines-aliphatic-secondary"
+query {
+  one_embedding_per_start_atom: true
+  smarts: "[0NH](-[CX4])[CX4]"
+}

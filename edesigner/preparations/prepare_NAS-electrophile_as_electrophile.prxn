@@ -1,0 +1,22 @@
+name: "make_SnAr_isotope"
+
+scaffold {
+  id: 0 
+  query_file:"${EDESIGNER_QUERIES}/ClF_6r_2EWG_ringsystem_limit_halogen.proto"
+  query_file:"${EDESIGNER_QUERIES}/ClF_EWG_H_ringsystem_limit_halogen_two_rings.proto"
+  query_file:"${EDESIGNER_QUERIES}/ClF_5r1H1EWG_ortho_ringsystem_limit_halogen.proto"
+  query_file:"${EDESIGNER_QUERIES}/ClF_5r_2EWG_ringsystem_limit_halo.proto"
+  query_file:"${EDESIGNER_QUERIES}/ClF_H_EWG_ringsystem_limit_halogen_two_rings.proto"
+  query_file:"${EDESIGNER_QUERIES}/ClF_5rmin2H_ortho_ringsystem_limit_halo.proto"
+  query_file:"${EDESIGNER_QUERIES}/ClF_5rmin2H_para_ringsystem_limit_halo.proto"
+  query_file:"${EDESIGNER_QUERIES}/ClF_6r_2EWG_ringsystem_limit_halogen_two_rings.proto"
+  query_file:"${EDESIGNER_QUERIES}/ClF_6rmin2N_ortho.proto"
+  query_file:"${EDESIGNER_QUERIES}/ClF_6rN_EWG_ringsystem_limit_halo.proto"
+  query_file:"${EDESIGNER_QUERIES}/ClF_6rN_ortho-para.proto"
+  query_file:"${EDESIGNER_QUERIES}/FCl_NO2_ortho_para.proto"
+  remove_atom: 0
+  isotope {
+  atom: 1 
+  isotope: $isotope_1
+  }
+}

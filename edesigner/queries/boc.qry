@@ -1,0 +1,7 @@
+(0 Query
+  (A I  Version 2)
+  (A C Comment "boc")
+  (A I one_embedding_per_start_atom 0)
+  (A C smarts "[0N;!$(N(-[C,S]=,#[O,N,S])-C(=O)O)][0C](=[O])[O][C]([CH3])([CH3])[CH3]")
+)
+

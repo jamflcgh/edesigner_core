@@ -1,0 +1,35 @@
+(0 Composite_Query
+  (A I version 2)
+  (A C Comment "nas_nucleophile")
+  (A I one_embedding_per_start_atom 1)
+  (0 Query
+    (A I version 2)
+    (A C smarts "[0NH2]-[CX4T1]")
+  )
+  (1 Query
+    (A I version 2)
+    (A C smarts "[0NX3H2]-[0c]")
+  )
+  (2 Query
+    (A I version 2)
+    (A C smarts "[0ND2H](-[CX4])-[CX4]")
+  )
+  (3 Query
+    (A I version 2)
+    (A C smarts "[0NT0D2H](-[CX4])-a")
+  )
+  (4 Query
+    (A I version 2)
+    (A C smarts "[0SD1H]-a")
+  )
+  (5 Query
+    (A I version 2)
+    (A C smarts "[0OD1H]-a")
+  )
+  (6 Query
+    (A I version 2)
+    (A C smarts "[0SD1H][CT1X4][#6]")
+  )
+)
+
+

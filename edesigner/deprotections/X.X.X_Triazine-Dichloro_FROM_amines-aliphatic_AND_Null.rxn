@@ -1,0 +1,12 @@
+(0 Reaction
+  (A C Comment "X.X.X_Triazine_Dichloro_FROM_amines_aliphatic_AND_Null")
+  (0 Scaffold
+     (A C query_file "${EDESIGNER_QUERIES}/amines_aliphatic.qry")
+  )
+  (1 Sidechain
+    (A C smiles "c1nc(Cl)nc(Cl)n1")
+    (A C smarts "c1nc(Cl)nc(Cl)n1")
+    (A I join (0 0))
+  )
+)
+

@@ -1,0 +1,6 @@
+name: "fmoc"
+comment: "aliphatic and aromatic fmoc amine"
+comment: "matches first atom which must be with isotope 0"
+query_file: "${EDESIGNER_QUERIES}/sec_fmoc.proto"
+query_file: "${EDESIGNER_QUERIES}/tert_fmoc.proto"
+

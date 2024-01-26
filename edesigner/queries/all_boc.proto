@@ -1,0 +1,5 @@
+name: "all_boc"
+query {
+  one_embedding_per_start_atom: true
+  smarts: "[0N]C(=O)OC([CH3])([CH3])[CH3]"
+}

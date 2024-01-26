@@ -1,0 +1,13 @@
+(0 Reaction
+  (A C Comment "3.3.2_Sonogashira_coupling_FROM_arylhalide_AND_Null")
+  (0 Scaffold
+     (A C query_file "${EDESIGNER_QUERIES}/arylhalide.qry")
+     (A I break_bond (0 1))
+     (A I remove_fragment 0)
+  )
+  (1 Sidechain
+     (A C smiles "[CH]#[CH]")
+     (A C smarts "[CH]#[CH]")
+     (A I join (1 0))
+  )
+)

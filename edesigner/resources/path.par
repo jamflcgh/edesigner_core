@@ -1,3 +1,0 @@
-fieldname	data type	list mark	comment	value
-Database_Run	str		Token generated with the date where the BBs were extracted from the collections by e_bbt_creator.	20200608
-run	str		run code (Identifier of this run of e_designer, lib_designer and lib_design_interpreter)	3Cboth29

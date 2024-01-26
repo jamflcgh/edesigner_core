@@ -1,0 +1,5 @@
+name: "amines-aliphatic"
+comment: "aliphatic primary and secondary amine"
+comment: "matches first atom which must be with isotope 0"
+query_file: "${EDESIGNER_QUERIES}/amines_aliphatic_primary.proto"
+query_file: "${EDESIGNER_QUERIES}/amines_aliphatic_secondary.proto"

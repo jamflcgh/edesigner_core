@@ -1,0 +1,10 @@
+(0 Reaction
+  (A C Comment "prepare_isothiocyanates_as_amine")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/isothiocyanates.qry")
+    (A I break_bond (1 2))
+    (A I remove_fragment 2)
+    (A I isotope (1 $isotope_1))
+  )
+)
+

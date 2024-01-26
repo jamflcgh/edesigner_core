@@ -1,0 +1,12 @@
+
+(0 Reaction
+  (A C Comment "prepare_alkynes_terminal_as_electrophile")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/alkynes_terminal.qry")
+    (A I break_bond (1 2))
+    (A I remove_fragment 1)
+    (A I isotope (2 $isotope_1))
+  )
+)
+
+

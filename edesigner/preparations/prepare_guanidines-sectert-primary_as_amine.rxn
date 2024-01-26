@@ -1,0 +1,10 @@
+(0 Reaction
+  (A C Comment "prepare_guanidines-sectert-primary_as_amine")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/guanidines_sectert_primary.qry")
+    (A I break_bond (1 3))
+    (A I remove_fragment 1)
+    (A I isotope (3 $isotope_1))
+  )
+)
+

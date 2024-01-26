@@ -1,0 +1,11 @@
+name: "repare_amines-aliphatic-primary_as_nucleophile"
+scaffold {
+  id: 0
+  query_file:"${EDESIGNER_QUERIES}/amines_aliphatic_primary.proto"
+  isotope {
+  atom: 0
+  isotope: $isotope_1
+  }
+}
+
+

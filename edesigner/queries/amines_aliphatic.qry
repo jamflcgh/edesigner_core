@@ -1,0 +1,16 @@
+(0 Composite_Query
+  (A I version 2)
+  (A C Comment "amines")
+  (0 Query
+    (A I version 2)
+    (A I one_embedding_per_start_atom 1)
+    (A C smarts "[0NH2]-[CX4]")
+  )
+  (1 Query
+    (A I version 2)
+    (A I one_embedding_per_start_atom 1)
+    (A C smarts "[0ND2H](-[CX4])-[CX4]")
+  )
+)
+
+

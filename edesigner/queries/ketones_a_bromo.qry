@@ -1,0 +1,5 @@
+(0 Query
+  (A C Comment "ketones_a_bromo")
+  (A I Version 2)
+  (A C smarts  "[0OD1]=[0CD3T1]([0CH>0T1]Br)[$(c),$([CX4]);!$(C=[*]);!$(C-[F,Cl,Br,I,S])]")
+)

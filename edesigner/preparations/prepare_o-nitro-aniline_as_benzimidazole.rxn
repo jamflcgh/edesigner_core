@@ -1,0 +1,16 @@
+(0 Reaction
+  (A C Comment "prepare_o-nitro-aniline_as_benzimidazole")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/o_nitro_sec_aniline.qry")
+    (A I break_bond (3 4))
+    (A I remove_fragment 4)
+  )
+  (1 Sidechain
+    (A C smiles "[NH]=[CH2]")
+    (A C smarts "[NH]=[CH2]")
+    (A I isotope (1 $isotope_1))
+    (A I join (1 1))
+    (A I join (3 0))
+  )
+)
+

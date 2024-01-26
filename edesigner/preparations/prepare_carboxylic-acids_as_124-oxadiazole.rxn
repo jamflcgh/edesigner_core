@@ -1,0 +1,15 @@
+(0 Reaction
+  (A C Comment "prepare_carboxylic-acids_as_124-oxadiazole")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/carboxylic_acids.qry")
+    (A I break_bond (1 3))
+    (A I remove_fragment 1)
+  )
+  (1 Sidechain
+    (A C smiles "[cH]1on[cH]n1")
+    (A C smarts "[cH]1on[cH]n1")
+    (A I isotope (3 $isotope_1))
+    (A I join (3 0))
+  )
+)
+

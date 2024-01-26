@@ -1,0 +1,6 @@
+(0 Query
+  (A I Version 2)
+  (A C Comment "carboxylic_acids")
+  (A C smarts "[0OH,0O-]-[0C](=O)[#6]")
+)
+

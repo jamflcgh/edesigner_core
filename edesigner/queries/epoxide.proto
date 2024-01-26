@@ -1,0 +1,6 @@
+name: "epoxide"
+query {
+  one_embedding_per_start_atom: true
+  smarts: "O1CC1"
+}
+

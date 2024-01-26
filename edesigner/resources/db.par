@@ -1,7 +1,7 @@
-fieldname	db	path	filename	id_name	smiles_name	separator	rb_name	mw_name	quantity_name	mw_filter	rb_filter	na_filter	quantity_filter	external_db
-data type	str	str	str	str	str	str	str	str	str	float	int	int	float	bool
-list mark												;		
-comment	name given to the collection	folder where the collection file is stored	collection file name	name of the header of the column containing the compound id	name of the header containing the smiles string for the compound	separator between fields (comma, tab or space)	name of the column containing the number of rotatable bonds of the compound	name of the column containing the molecular weight of the compound	name of the column containing the quantity of the compound  (or None if no such column exists)	maximum molecular weight allowed (or None if no such filter)	maximum number of rotatable bonds allowed (or None if not such filter)	range of acceptable number of atoms (or None if not such filter)	minimum quantity allowed (or None if not such filter)	Whether the collection is external or internal
-value	<collection_name>	<Folder_that_contains_collection_file>	<collection_file_name>	LSNNUMBER	SMILES	space	W_ROTBOND	W_AMW	QUANTITY	1000	10	4;25	None	False
-value	<collection_name>	<Folder_that_contains_collection_file>	<collection_file_name>	NAME	SMILES	space	W_ROTBOND	W_AMW	None	None	None	4;25	None	True
-value	<collection_name>	<Folder_that_contains_collection_file>	<collection_file_name>	NAME	SMILES	space	W_ROTBOND	W_AMW	None	None	None	4;25	None	True
+fieldname	db	filename
+data type	str	str
+list mark
+comment	name given to the collection	folder where the collection file is stored
+value	Enamine300	${EDESIGNER_TEST_FOLDER}/dbs/enamine_micro.smi
+
+

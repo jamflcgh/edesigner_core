@@ -1,0 +1,7 @@
+(0 Reaction
+  (A C Comment "prepare_alkynes_terminal_as_electrophile")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/alkynes_terminal.qry")
+    (A I isotope (0 $isotope_1))
+  )
+)

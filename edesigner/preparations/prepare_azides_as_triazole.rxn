@@ -1,0 +1,15 @@
+(0 Reaction
+  (A C Comment "prepare_azides_as_triazole")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/azide.qry")
+    (A I break_bond (2 3))
+    (A I remove_fragment 2)
+  )
+  (1 Sidechain
+    (A C smiles "[nH]1nncc1")
+    (A C smarts "[nH]1nncc1")
+    (A I isotope (4 $isotope_1))
+    (A I join (3 0))
+  )
+)
+

@@ -1,0 +1,11 @@
+(0 Reaction
+  (A C Comment "X.X.X_Nitro_fluoro_FROM_amines-aliphatic_AND_Null")
+  (0 Scaffold
+     (A C query_file "${EDESIGNER_QUERIES}/amines_aliphatic.qry")
+  )
+  (1 Sidechain
+     (A C smiles "Fc1c(N(=O)(=O))cc(C=O)cc1")
+     (A C smarts "Fc1c(N(=O)(=O))cc(C=O)cc1")
+     (A I join (0 8))
+  )
+)

@@ -1,0 +1,34 @@
+# Hit molecules which have 2 EWG + F/Cl attached. 
+# Provision to have it hit rings separated by 1 bond 
+
+# This specifier works independently at each run 
+# Be specific in what the ring system has 
+
+name: "ClF_2_EWG_2rings"
+query {
+  name: "Cl/F -> 2 EWD"
+  smarts: "[F,Cl]-[/IWgid8a].[/IWgid8a]!@[/IWgid9a]"
+  unique_embeddings_only: true
+
+  ring_system_specifier {
+    base {
+      set_global_id: 8
+      environment: "a-[$(C#N),$([N,N+,S,C](=O)),$([ND2H][CD3](=[O,S;D1]))]&&1a-[F,Cl]"
+      max_heteroatom_count: 0
+    }
+    max_rings_in_system: 2
+    non_aromatic_ring_count: 0
+    max_degree_of_fusion: 1
+  }
+
+  ring_system_specifier {
+    base {
+      set_global_id: 9
+      environment: "a-[$(C#N),$([N,N+,S,C](=O)),$([ND2H][CD3](=[O,S;D1]))]&&0[/IWgid8a]&&0a-[F,Cl]"
+      max_heteroatom_count: 0
+    }
+    max_rings_in_system: 2
+    non_aromatic_ring_count: 0
+    max_degree_of_fusion: 1
+  }
+}

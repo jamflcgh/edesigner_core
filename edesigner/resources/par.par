@@ -1,13 +1,14 @@
 fieldname	data type	list mark	comment	value
 percentile	float		percentile of the library containing only compounds with number of atoms less than max_na_percentile	0.5
-max_na_percentile	int		number of atoms for which all the molecules in the library below that percentile will hace less atoms	29
+max_na_percentile	int		number of atoms for which all the molecules in the library below that percentile will have less atoms	29
 max_na_absolute	int		maximum number of atoms allowed for the compound with most atoms in the library	39
-max_cycle_na	int	;	maximum number of atoms allowed at the end of each cycle for the molecule with less atoms in the design	30;39
-max_scaffolds_na	int		maximum number of atoms coming from scaffods for each macrodesign	14
-headpiece_na	int		Number of atoms of the headpiece that will be transferred to the final molecule atom count	4
-min_count	int		Minimum member of compounds in the library it it was produced only with internal compounds	50000
-include_designs	str		(PRODUCTION, BOTH) Which classes of reactions can be included (only oproduction or both production and development)	BOTH
-rb_filter	float		Threshold for rot bonds of BBs to be incorporated while reading the db (once the excess rb is deduced)	100
-designs_in_memory	int		Number of designs that can be held in memory to expand to the next cycle	40000
-final_compounds_folder	str		Name of the compounds folder to be included in the configuration file	<folder_for_summarized_compounds_files>
-final_reactions_folder	str		Name of the reactions folder to be included in the configuration file	<reactions_folder>
+max_cycle_na	int	;	maximum number of atoms allowed at the end of each cycle for the molecule with less atoms in the design	25;32;39
+max_scaffolds_na	int		maximum number of atoms coming from scaffolds for each lib-design	14
+headpiece_na	int		Number of atoms of the headpiece that will be transferred to the final molecule atom count	2
+min_count	int		Minimum member of compounds in the library if it was produced with internal or with all compounds (depending on how parameter)	1
+include_designs	str		(PRODUCTION, BOTH) Which classes of reactions can be included (only production or both production and development)	BOTH
+designs_in_memory	int		Number of designs that can be held in memory to expand to the next cycle	20000
+hpc	bool		whether to use HPC parallelization in eDESIGNER script	TRUE
+hpc_cores	int		how many cores we want per node in the hpc	4
+
+

@@ -1,0 +1,6 @@
+name: "cyanamine"
+query {
+  one_embedding_per_start_atom: true
+  smarts: "[#6]N-C#N"
+}
+

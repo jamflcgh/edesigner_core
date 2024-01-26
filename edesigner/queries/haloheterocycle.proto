@@ -1,0 +1,6 @@
+name: "haloheterocycle"
+query {
+  one_embedding_per_start_atom: true
+  smarts: "[Cl,F][c;r6]n"
+}
+

@@ -1,0 +1,19 @@
+(0 Reaction
+  (A C Comment "prep_nitro-fluoro_as_benzimidazole")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/nitro_fluoro.qry")
+    (A I break_bond (0 1))
+    (A I remove_fragment 0)
+    (A I break_bond (2 3))
+    (A I remove_fragment 3)
+  )
+  (1 Sidechain
+    (A C smiles "[NH2]-[CH]=[NH]")
+    (A C smarts "[NH2]-[CH]=[NH]")
+    (A I isotope (0 $isotope_1))
+    (A I isotope (1 $isotope_2))
+    (A I join (1 0 1))
+    (A I join (2 2 1))
+  )
+)
+

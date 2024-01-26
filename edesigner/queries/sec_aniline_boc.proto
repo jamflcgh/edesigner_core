@@ -1,0 +1,5 @@
+name: "sec_aniline_boc"
+query {
+  one_embedding_per_start_atom: true
+  smarts: "[0NH](C(=O)OC([CH3])([CH3])[CH3])c"
+}

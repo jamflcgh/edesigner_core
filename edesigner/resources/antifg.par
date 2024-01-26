@@ -1,41 +1,47 @@
-fieldname	index	name
-data type	int	str
-list mark		
-comment		
-value	0	KETAL
-value	1	ACETAL
-value	2	ACID_CHLORIDES
-value	3	ALKENE
-value	4	ALKENE_ACTIVATED
-value	5	ALKENE_NON_ACTIVATED
-value	6	ALKYL_SULFUR_PYRIMIDINE
-value	7	ALKYNES_INTERNAL_NON_ACTIVATED
-value	8	calc_HALIDES_ALKYL
-value	9	HALIDES_BENZYL
-value	10	SEC_ANILINE_BOC
-value	11	BORONICS_ALIPHATIC
-value	12	TRIFLUOROBORATES
-value	13	DICARBONYL_IMIDE
-value	14	DISULFIDE
-value	15	PRIM_ANILINE_FMOC
-value	16	SEC_ANILINE_FMOC
-value	17	TRITYL
-value	18	IMINES
-value	19	ISOCYANIDES
-value	20	ISOTOPE
-value	21	HALOALKENE
-value	22	NHYDROXYAMIDES
-value	23	calc_NNH2
-value	24	calc_HYDRAZINES
-value	25	HYDRAZIDES
-value	26	NONORGANIC
-value	27	NVOC
-value	28	OXIME
-value	29	PHOSPHORUS
-value	30	SULFONIC_ACIDS
-value	31	TETRAZOLE
-value	32	calc_EXCLUDED_BORONICS
-value	33	calc_KETONES
-value	34	calc_AMIDINES
-value	35	calc_GUANIDINES
-value	36	calc_AMINES_AROMATIC_SECONDARY
+fieldname	index	name	base_queries
+data type	int	str	str
+list mark			;
+comment		name of the FG	query files required to compute this FG
+value	0	ketal	${EDESIGNER_QUERIES}/ketal.qry
+value	1	acetal	${EDESIGNER_QUERIES}/acetal.qry
+value	2	acid_chlorides	${EDESIGNER_QUERIES}/acid_chlorides.qry
+value	3	alkene	${EDESIGNER_QUERIES}/alkene.qry
+value	4	alkene_activated	${EDESIGNER_QUERIES}/alkene_activated.qry
+value	5	alkene_non_activated	${EDESIGNER_QUERIES}/alkene_non_activated.qry
+value	6	alkyl_sulfur_pyrimidine	${EDESIGNER_QUERIES}/alkyl_sulfur_pyrimidine.qry
+value	7	alkynes_internal_non_activated	${EDESIGNER_QUERIES}/alkynes_internal_non_activated.qry
+value	8	calc_EXCLUDED_HALIDES_ALKYL	${EDESIGNER_QUERIES}/all_halides_alkyl.qry;${EDESIGNER_QUERIES}/ketones_a_bromo.qry
+value	9	halides_benzyl	${EDESIGNER_QUERIES}/halides_benzyl.qry
+value	11	boronics_aliphatic	${EDESIGNER_QUERIES}/boronics_aliphatic.qry
+value	12	trifluoroborates	${EDESIGNER_QUERIES}/trifluoroborates.qry
+value	13	dicarbonyl_imide	${EDESIGNER_QUERIES}/dicarbonyl_imide.qry
+value	14	disulfide	${EDESIGNER_QUERIES}/disulfide.qry
+value	15	prim_aniline_fmoc	${EDESIGNER_QUERIES}/prim_aniline_fmoc.qry
+value	16	sec_aniline_fmoc	${EDESIGNER_QUERIES}/sec_aniline_fmoc.proto
+value	17	trityl	${EDESIGNER_QUERIES}/trityl.qry
+value	18	imines	${EDESIGNER_QUERIES}/imines.qry
+value	19	isocyanides	${EDESIGNER_QUERIES}/isocyanides.qry
+value	20	isotope	${EDESIGNER_QUERIES}/isotope.qry
+value	21	haloalkene	${EDESIGNER_QUERIES}/haloalkene.qry
+value	22	nhydroxyamides	${EDESIGNER_QUERIES}/nhydroxyamides.qry
+value	23	calc_EXCLUDED_HYDRAZINES	${EDESIGNER_QUERIES}/all_hydrazines.qry;${EDESIGNER_QUERIES}/hydrazines_primary.qry
+value	24	hydrazides	${EDESIGNER_QUERIES}/hydrazides.qry
+value	25	nonorganic	${EDESIGNER_QUERIES}/nonorganic.qry
+value	26	nvoc	${EDESIGNER_QUERIES}/nvoc.qry
+value	27	oxime	${EDESIGNER_QUERIES}/oxime.qry
+value	28	phosphorus	${EDESIGNER_QUERIES}/phosphorus.qry
+value	29	sulfonic_acids	${EDESIGNER_QUERIES}/sulfonic_acids.qry
+value	30	tetrazole	${EDESIGNER_QUERIES}/tetrazole.qry
+value	31	calc_EXCLUDED_BORONICS	${EDESIGNER_QUERIES}/all_boronics.qry;${EDESIGNER_QUERIES}/boronics_aromatic.qry
+value	32	calc_EXCLUDED_KETONES	${EDESIGNER_QUERIES}/all_ketones.qry;${EDESIGNER_QUERIES}/ketones_a_bromo.qry;${EDESIGNER_QUERIES}/ynones.qry
+value	33	calc_EXCLUDED_AMIDINES	${EDESIGNER_QUERIES}/all_amidines.qry;${EDESIGNER_QUERIES}/amidines_primary.qry;${EDESIGNER_QUERIES}/amidines_secondary.qry
+value	34	calc_EXCLUDED_GUANIDINES	${EDESIGNER_QUERIES}/all_guanidines.qry;${EDESIGNER_QUERIES}/guanidines_secondary_primary.qry;${EDESIGNER_QUERIES}/guanidines_secondary_secondary.qry;${EDESIGNER_QUERIES}/guanidines_tertiary_primary.qry;${EDESIGNER_QUERIES}/guanidines_tertiary_secondary.qry
+value	35	tert_aniline_fmoc	${EDESIGNER_QUERIES}/tert_aniline_fmoc.proto
+value	36	calc_EXCLUDED_BOC	${EDESIGNER_QUERIES}/all_boc.proto;${EDESIGNER_QUERIES}/sec_boc.proto;${EDESIGNER_QUERIES}/tert_boc.proto;${EDESIGNER_QUERIES}/sec_aniline_boc.proto;${EDESIGNER_QUERIES}/tert_aniline_boc.proto
+value	37	nitro_aliphatic	${EDESIGNER_QUERIES}/nitro_aliphatic.qry
+value	38	epoxide	${EDESIGNER_QUERIES}/epoxide.proto
+value	39	ester_tbutyl	${EDESIGNER_QUERIES}/ester_tbutyl.qry
+value	40	calc_EXCLUDED_HALOHETEROCYCLE	${EDESIGNER_QUERIES}/NAS_electrophile.proto;${EDESIGNER_QUERIES}/haloheterocycle.proto
+value	41	calc_EXCLUDED_ACTIVATED_ALKYNES	${EDESIGNER_QUERIES}/alkynes_activated.qry;${EDESIGNER_QUERIES}/ynones.qry
+value	42	aryl_sulphonate	${EDESIGNER_QUERIES}/aryl_sulphonate.proto
+value	43	cyanamine	${EDESIGNER_QUERIES}/cyanamine.proto

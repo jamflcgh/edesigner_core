@@ -1,0 +1,16 @@
+(0 Reaction
+  (A C Comment "prepare_alkynes-terminal_as_pyrimidine")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/alkynes_terminal.qry")
+    (A I break_bond (1 2))
+    (A I remove_fragment 1)
+  )
+  (1 Sidechain
+    (A C smiles "[cH]1n[cH]n[cH]c1")
+    (A C smarts "[cH]1n[cH]n[cH]c1")
+    (A I isotope (4 $isotope_1))
+    (A I isotope (2 $isotope_2))
+    (A I join (2 0 1))
+  )
+)
+

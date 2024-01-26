@@ -1,0 +1,5 @@
+(0 Query
+  (A I version 2)
+  (A C Comment "tert_aniline_boc")
+  (A C smarts "[NT0]([$(c)])([$([CG0T1X4])])C(=[OD1])O[CT1]([CD1])([CD1])[CD1]")
+)

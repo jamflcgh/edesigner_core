@@ -1,0 +1,13 @@
+name: "count aryl halides"
+query {
+  name: "count a-Cl/F"
+  smarts: ">1[Cl,F]-[/IWgid8]" 
+  one_embedding_per_start_atom: true
+  ring_specifier {
+    base {
+      set_global_id: 8
+      environment: ">1a-[F,Cl]"
+    }
+  }
+}
+

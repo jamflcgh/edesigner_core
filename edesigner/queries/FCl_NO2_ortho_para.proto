@@ -1,0 +1,20 @@
+# Look at F / Cl ortho or para to the nitro group in the same ring 
+# Constraint to molecule with only 1 F or Cl. 
+
+name: "FCl_ortho_para_NO2"
+query {
+  name: "FCl_ortho_para_NO2"
+  smarts: "[Cl,F]-[/IWgid8c]"
+  unique_embeddings_only: true
+  one_embedding_per_start_atom: true
+  ring_specifier {
+    base {
+      set_global_id: 8
+      environment: "1a-[F,Cl;D1]&&a-(N(=O)=O)(a-[F,Cl;D1])||a-(N(=O)=O)(aaa-[F,Cl;D1])"
+      environment_can_match_in_ring_atoms: true
+    }
+    aromatic: true
+    fused: 0
+    fused: 1
+  }
+}

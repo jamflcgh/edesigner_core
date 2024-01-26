@@ -1,0 +1,11 @@
+name: "boc_deprotection"
+scaffold {
+  id: 0
+  query_file: "${EDESIGNER_QUERIES}/boc.proto"
+  break_bond {
+    a1: 0
+    a2: 1
+  }
+  remove_fragment: 1
+}
+

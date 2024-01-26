@@ -1,0 +1,16 @@
+(0 Reaction
+  (A C Comment "prepare_o-iodo-aniline_as_indol")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/o_iodo_sec_aniline.qry")
+    (A I break_bond (0 1))
+    (A I remove_fragment 0)
+  )
+  (1 Sidechain
+    (A C smiles "[CH2]=[CH2]")
+    (A C smarts "[CH2]=[CH2]")
+    (A I isotope (1 $isotope_1))
+    (A I join (1 0 1))
+    (A I join (3 1 1))
+  )
+)
+

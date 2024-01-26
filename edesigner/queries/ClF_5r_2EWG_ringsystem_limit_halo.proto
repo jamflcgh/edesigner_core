@@ -1,0 +1,17 @@
+name: "ClF_2EWG_1H"
+query {
+  name: "Cl/F -> 2 EWG + HetAtom"
+  smarts: "[Cl,F]-[/IWgid8c].[/IWgid8a]"
+  unique_embeddings_only: true
+  ring_system_specifier {
+    base {
+      set_global_id: 8
+      environment: "2a-[$(C#N),$([N,N+,S,C](=O)),$([ND2H][CD3](=[O,S;D1]))]&&[n,o,s]&&1a-[Cl,F]"
+      environment_can_match_in_ring_atoms: true
+      min_heteroatom_count: 1
+    }
+    max_rings_in_system: 2
+    non_aromatic_ring_count: 0
+    max_degree_of_fusion: 1
+  }
+}

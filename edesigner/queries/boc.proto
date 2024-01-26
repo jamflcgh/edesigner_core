@@ -1,0 +1,7 @@
+name: "boc"
+comment: "aliphatic and aromatic boc amine"
+comment: "matches first atom which must be with isotope 0"
+query_file: "${EDESIGNER_QUERIES}/sec_boc.proto"
+query_file: "${EDESIGNER_QUERIES}/tert_boc.proto"
+query_file: "${EDESIGNER_QUERIES}/sec_aniline_boc.proto"
+query_file: "${EDESIGNER_QUERIES}/tert_aniline_boc.proto"

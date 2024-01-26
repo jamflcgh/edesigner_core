@@ -1,47 +1,49 @@
-fieldname	index	name	stable	self_incompatibility	excess_rb	allowed_end_exposed	atom_dif
-data type	int	str	int	int	int	bool	int
-list mark				;			
-comment		FG name	stable on DNA	Incompatibility list	rotable bonds lost upon reaction in a typical reaction	The functional group can be exposed in the final library molecules	Number of atoms lost upon a typical reaction
-value	0	NO_FG	1	-1	0	True	0
-value	1	ALDEHYDES	1	1	0	False	-1
-value	2	ALKYNES_TERMINAL	1	2;37	0	True	0
-value	3	AMINES_ALIPHATIC_SECONDARY	1	21;3;23;22;37;27;24;25;29;38;39;26;10;11;13;41	0	True	0
-value	4	AZIDE	1	4	0	False	0
-value	5	CARBOXYLIC_ACIDS	1	5	0	True	0
-value	6	THIOLS	1	37;9;7;24;25;29;15;10;11;13;6;30	0	True	0
-value	7	calc_THIOPHENOLS	1	37;9;7;24;25;29;15;38;39;11;6;41	0	True	0
-value	8	calc_NITRO	1	8	0	True	-1
-value	9	calc_PHENOLS	1	37;9;7;24;25;29;15;38;39;11;6;41	0	True	0
-value	10	SEC_FMOC	1	3;7;27;10;13;6	3	True	-17
-value	11	SULFONYL_CHLORIDES	0	31;32;21;3;23;22;9;7;33;34;35;36;27;24;25;29;15;38;39;26;11;6;41	0	False	-1
-value	12	BORONICS_AROMATIC	0	20;12;19;26;40	0	False	-5
-value	13	TERT_FMOC	1	3;7;10;13;6	3	True	-17
-value	14	ESTERS_METHYL_ETHYL	1	14	0	True	-2
-value	15	NITRO_FLUORO	1	21;3;37;7;33;34;35;36;27;24;25;29;15;38;39;11;6;41	0	False	-2
-value	16	SEC_BOC	1	16;17	2	True	-7
-value	17	TERT_BOC	1	16;17	2	True	-7
-value	18	O_NITRO_SEC_ANILINE	1	18	0	True	-1
-value	19	calc_ARYLIODIDE	1	20;12;19;40	0	True	-1
-value	20	ARYLBROMIDE	1	20;12;19;40	0	True	-1
-value	21	AMINES_ALIPHATIC_PRIMARY	1	21;3;23;22;37;27;24;25;29;38;39;26;10;11;13;41	0	True	0
-value	22	calc_AMINES_AROMATIC_PRIMARY	1	21;3;23;22;37;27;24;25;29;38;39;26;11;41	0	True	0
-value	23	AMINES_HETEROAROMATIC_PRIMARY	1	21;3;23;22;37;27;24;25;29;38;39;26;11;41;30	0	True	0
-value	24	ISOCYANATES	0	21;3;23;22;37;7;33;34;35;36;27;24;25;29;15;38;39;26;40;11;6;41	0	False	0
-value	25	ISOTHIOCYANATES	0	21;3;23;22;37;7;33;34;35;36;27;24;25;29;15;38;39;26;40;11;6;41	0	False	0
-value	26	O_IODO_ANILINE	1	21;3;23;22;7;27;24;25;29;38;39;26;11;41	0	True	-1
-value	27	HYDRAZINES_PRIMARY	1	28;1;21;3;23;22;37;27;24;25;29;38;39;10;11;13;41	0	False	0
-value	28	A_H_KETONES	1	28	0	True	-1
-value	29	KETONES_A_BROMO	0	21;3;23;37;7;33;34;35;36;27;24;25;29;15;38;39;26;11;6;41	0	False	-2
-value	30	YNONES	1	37;7;27;24;25;29;15;6;30	0	False	-1
-value	31	AMIDINES_PRIMARY	1	31;32;11	0	True	0
-value	32	AMIDINES_SECONDARY	1	31;32;11	0	True	0
-value	33	GUANIDINES_SECONDARY_PRIMARY	1	37;33;34;35;36;24;25;29;11;41	0	True	0
-value	34	GUANIDINES_SECONDARY_SECONDARY	1	37;33;34;35;36;24;25;29;11;41	0	True	0
-value	35	GUANIDINES_TERTIARY_PRIMARY	1	37;33;34;35;36;24;25;29;11;41	0	True	0
-value	36	GUANIDINES_TERTIARY_SECONDARY	1	37;33;34;35;36;24;25;29;11;41	0	True	0
-value	37	calc_NAS_ELECTROPHILE	1	21;3;23;22;37;9;7;27;24;25;29;15;38;39;26;11;6;41;42	0	False	-1
-value	38	O_AMINO_PHENOLS	1	21;3;23;22;37;9;7;27;24;25;29;38;39;26;11;6;41	0	True	0
-value	39	O_AMINO_THIOPHENOLS	1	21;3;23;22;37;7;27;24;25;29;38;39;26;11;6;41	0	True	0
-value	40	O_IODO_SEC_ANILINE	1	20;19;40	0	True	-1
-value	41	TRIAZINE_DICHLORO	1	21;3;23;22;37;9;7;33;34;35;36;27;24;25;29;15;38;39;11;6;41	0	False	-2
-value	42	TRIAZINE_MONOCHLORO	1	37;42	0	False	-1
+fieldname	index	name	stable	self_incompatibility	excess_rb	allowed_end_exposed	atom_dif	base_queries	parent	grandparent	master	protected
+data type	int	str	int	int	int	bool	int	str	str	str	str	str
+list mark				;				;	;	;	;	;
+comment		FG name	stable on DNA	Incompatibility list	rotable bonds lost upon reaction in a typical reaction	The functional group can be exposed in the final library molecules	Number of atoms lost upon a typical reaction	query files required to compute this FG	parent of FG	grandparent of FG	general behaviors of FG	Source of FG from a teprotection
+value	0	NO_FG	1	-1	0	TRUE	0		NO_FG
+value	1	aldehyde	1	1	0	FALSE	-1	${EDESIGNER_QUERIES}/aldehyde.qry	ALDEHYDES	ALDEHYDES	ELECTROPHILE
+value	2	alkynes_terminal	1	2;35	0	TRUE	0	${EDESIGNER_QUERIES}/alkynes_terminal.qry	ALKYNES_TERMINAL	ALKYNES_TERMINAL	COUPLING_DONOR
+value	3	amines_aliphatic_secondary	1	20;3;21;35;25;22;23;27;36;37;24;10;11;13;39	0	TRUE	0	${EDESIGNER_QUERIES}/amines_aliphatic_secondary.qry	AMINES_SECONDARY	AMINES	NAS_NUCLEPTHILE;NUCLEOPHILE	TERT_FMOC;_GLYCINE_METHYLESTER
+value	4	azide	1	4	0	FALSE	0	${EDESIGNER_QUERIES}/azide.qry	AZIDE	AZIDE	COUPLIG_ACCEPTOR
+value	5	carboxylic_acids	1	5	0	TRUE	0	${EDESIGNER_QUERIES}/carboxylic_acids.qry	CARBOXYLIC_ACIDS	CARBOXYLIC_ACIDS	ELECTROPHILE	ESTERS_METHYL_ETHYL;_GLYCINE_METHYLESTER
+value	6	thiols	1	35;9;7;22;23;27;15;10;11;13;6;28	0	TRUE	0	${EDESIGNER_QUERIES}/thiols.qry	THIOLS	THIOLS	NUCLEOPHILE
+value	7	calc_THIOPHENOLS	1	35;9;7;22;23;27;15;36;37;11;6;39	0	TRUE	0	${EDESIGNER_QUERIES}/thiophenols.qry;${EDESIGNER_QUERIES}/o_amino_thiophenols.qry	calc_THIOPHENOLS	calc_THIOPHENOLS	NUCLEOPHILE
+value	8	calc_NITRO	1	8	0	TRUE	-1	${EDESIGNER_QUERIES}/nitro.qry;${EDESIGNER_QUERIES}/o_nitro_sec_aniline.qry;${EDESIGNER_QUERIES}/nitro_fluoro.qry	calc_NITRO	calc_NITRO	NUCLEOPHILE
+value	9	calc_PHENOLS	1	35;9;7;22;23;27;15;36;37;11;6;39	0	TRUE	0	${EDESIGNER_QUERIES}/phenols.qry;${EDESIGNER_QUERIES}/o_amino_phenols.qry	calc_PHENOLS	calc_PHENOLS	NAS_NUCLEPTHILE
+value	10	sec_fmoc	1	3;7;25;10;13;6	3	TRUE	-17	${EDESIGNER_QUERIES}/sec_fmoc.proto
+value	11	sulphonyl_chlorides	0	29;30;20;3;21;9;7;31;32;33;34;25;22;23;27;15;36;37;24;11;6;39	0	FALSE	-1	${EDESIGNER_QUERIES}/sulphonyl_chlorides.qry	SULFONYL_CHLORIDES	SULFONYL_CHLORIDES	ELECTROPHILE
+value	12	boronics_aromatic	0	12;19;24;38	0	FALSE	-5	${EDESIGNER_QUERIES}/boronics_aromatic.qry	BORONICS_AROMATIC	BORONICS_AROMATIC	COUPLIG_DONOR
+value	13	tert_fmoc	1	3;7;10;13;6	3	TRUE	-17	${EDESIGNER_QUERIES}/tert_fmoc.proto
+value	14	ester_methyl_ethyl	1	14	0	TRUE	-2	${EDESIGNER_QUERIES}/ester.qry
+value	15	nitro_fluoro	1	20;3;35;7;31;32;33;34;25;22;23;27;15;36;37;11;6;39	0	FALSE	-2	${EDESIGNER_QUERIES}/nitro_fluoro.qry	calc_NITRO;NAS_ELECTROPHILE	calc_NITRO;NAS_ELECTROPHILE	calc_NITRO;NAS_ELECTROPHILE	NITRO_FLUORO_ACID
+value	16	sec_aniline_boc	1	16;17;42;43	2	TRUE	-7	${EDESIGNER_QUERIES}/sec_aniline_boc.proto
+value	17	tert_aniline_boc	1	16;17;42;43	2	TRUE	-7	${EDESIGNER_QUERIES}/tert_aniline_boc.proto
+value	18	o_nitro_sec_aniline	1	18;42	0	TRUE	-1	${EDESIGNER_QUERIES}/o_nitro_sec_aniline.qry	calc_AMINES_AROMATIC_SECONDARY_1;calc_NITRO
+value	19	calc_ARYLHALIDE	1	12;19;38	0	TRUE	-1	${EDESIGNER_QUERIES}/arylhalide.qry;${EDESIGNER_QUERIES}/o_iodo_sec_aniline.qry;${EDESIGNER_QUERIES}/o_iodo_aniline.qry	calc_ARYLHALIDE	calc_ARYLHALIDE	COUPLING_ACCEPTOR
+value	20	amines-aliphatic-primary	1	20;3;21;35;25;22;23;27;36;37;24;10;11;13;39	0	TRUE	0	${EDESIGNER_QUERIES}/amines_aliphatic_primary.proto	AMINES_PRIMARY	AMINES	NAS_NUCLEPTHILE;NUCLEOPHILE	calc_SEC_ALIPHATIC_BOC
+value	21	calc_AMINES_AROMATIC_PRIMARY	1	20;3;21;35;25;22;23;27;36;37;24;11;39	0	TRUE	0	${EDESIGNER_QUERIES}/amines_aromatic_primary.proto;${EDESIGNER_QUERIES}/o_iodo_aniline.qry;${EDESIGNER_QUERIES}/o_amino_phenols.qry;${EDESIGNER_QUERIES}/o_amino_thiophenols.qry	AMINES_PRIMARY	AMINES	NUCLEOPHILE	SEC_ANILINE_BOC;calc_NITRO
+value	22	isocyanates	0	20;3;21;35;7;31;32;33;34;25;22;23;27;15;36;37;24;38;11;6;39	0	FALSE	0	${EDESIGNER_QUERIES}/isocyanates.qry	ISOCYANATES	ISOCYANATES	ELECTROPHILE
+value	23	isothiocyanates	0	20;3;21;35;7;31;32;33;34;25;22;23;27;15;36;37;24;38;11;6;39	0	FALSE	0	${EDESIGNER_QUERIES}/isothiocyanates.qry	ISOTHIOCYANATES	ISOTHIOCYANATES	ELECTROPHILE
+value	24	o_iodo_aniline	1	20;3;21;7;25;22;23;27;36;37;24;11;39	0	TRUE	-1	${EDESIGNER_QUERIES}/o_iodo_aniline.qry	AMINES_PRIMARY	AMINES	NUCLEOPHILE;COUPLING_ACCEPTOR
+value	25	hydrazines_primary	1	26;1;20;3;21;35;25;22;23;27;36;37;10;11;13;39	0	FALSE	0	${EDESIGNER_QUERIES}/hydrazines_primary.qry	HYDRAZINES_PRIMARY	HYDRAZINES_PRIMARY	HETEROCYCLE_DONOR
+value	26	nitrile	1	26	0	TRUE	-1	${EDESIGNER_QUERIES}/nitrile.qry	nitrile	nitrile	HETEROCYCLE_ACCEPTOR
+value	27	ketones_a_bromo	0	20;3;35;7;31;32;33;34;25;22;23;27;15;36;37;24;11;6;39	0	FALSE	-2	${EDESIGNER_QUERIES}/ketones_a_bromo.qry	KETONES_A_BROMO	KETONES_A_BROMO	HETEROCYCLE_ACCEPTOR
+value	28	ynones	1	35;7;25;22;23;27;15;6;28	0	FALSE	-1	${EDESIGNER_QUERIES}/ynones.qry	YNONES	YNONES	HETEROCYCLE_ACCEPTOR	CARBOXYLIC_ACIDS;ALKYNES_TERMINAL
+value	29	amidines_primary	1	29;30;11	0	TRUE	0	${EDESIGNER_QUERIES}/amidines_primary.qry	AMIDINES_PRIMARY	AMIDINES_PRIMARY	HETEROCYCLE_DONOR	_ISOTHIOCYANATE
+value	30	amidines_secondary	1	29;30;11	0	TRUE	0	${EDESIGNER_QUERIES}/amidines_secondary.qry	AMIDINES_SECONDARY	AMIDINES_SECONDARY	HETEROCYCLE_DONOR
+value	31	guanidines_secondary_primary	1	35;31;32;33;34;22;23;27;11;39	0	TRUE	0	${EDESIGNER_QUERIES}/guanidines_secondary_primary.qry	GUANIDINES_SECONDARY_PRIMARY	GUANIDINES_SECONDARY_PRIMARY	HETEROCYCLE_DONOR	_ISOTHIOCYANATE
+value	32	guanidines_secondary_secondary	1	35;31;32;33;34;22;23;27;11;39	0	TRUE	0	${EDESIGNER_QUERIES}/guanidines_secondary_secondary.qry	GUANIDINES_SECONDARY_SECONDARY	GUANIDINES_SECONDARY_SECONDARY	HETEROCYCLE_DONOR
+value	33	guanidines_tertiary_primary	1	35;31;32;33;34;22;23;27;11;39	0	TRUE	0	${EDESIGNER_QUERIES}/guanidines_tertiary_primary.qry	GUANIDINES_TERTIARY_PRIMARY	GUANIDINES_TERTIARY_PRIMARY	HETEROCYCLE_DONOR
+value	34	guanidines_tertiary_secondary	1	35;31;32;33;34;22;23;27;11;39	0	TRUE	0	${EDESIGNER_QUERIES}/guanidines_tertiary_secondary.qry	GUANIDINES_TERTIARY_SECONDARY	GUANIDINES_TERTIARY_SECONDARY	HETEROCYCLE_DONOR
+value	35	calc_NAS_ELECTROPHILE	1	20;3;21;35;9;7;25;22;23;27;15;36;37;24;11;6;39;40	0	FALSE	-1	${EDESIGNER_QUERIES}/NAS_electrophile.proto;${EDESIGNER_QUERIES}/triazine_dichloro.qry;${EDESIGNER_QUERIES}/triazine_chloro.qry;${EDESIGNER_QUERIES}/nitro_fluoro.qry	calc_NAS_ELECTROPHILE	calc_NAS_ELECTROPHILE	NAS_ELECTROPHILE
+value	36	o_amino_phenols	1	20;3;21;35;9;7;25;22;23;27;36;37;24;11;6;39	0	TRUE	0	${EDESIGNER_QUERIES}/o_amino_phenols.qry	AMINES_PRIMARY;calc_PHENOLS	AMINES;calc_PHENOLS	NUCLEOPHILE;NAS_NUCLEOPHILE
+value	37	o_amino_thiophenols	1	20;3;21;35;7;25;22;23;27;36;37;24;11;6;39	0	TRUE	0	${EDESIGNER_QUERIES}/o_amino_thiophenols.qry	AMINES_PRIMARY;calc_THIOPHENOLS	AMINES;calc_THIOPHENOLS	NUCLEOPHILE;NAS_NUCLEOPHILE
+value	38	o_iodo_sec_aniline	1	19;38	0	TRUE	-1	${EDESIGNER_QUERIES}/o_iodo_sec_aniline.qry	AMINES_SECONDARY	AMINES	NUCLEOPHILE;COUPLING_ACCEPTOR
+value	39	triazine_dichloro	1	20;3;21;35;9;7;31;32;33;34;25;22;23;27;15;36;37;11;6;39	0	FALSE	-2	${EDESIGNER_QUERIES}/triazine_dichloro.qry	TRIAZINE_DICHLORO	TRIAZINE_DICHLORO	NAS_ELECTROPHILE	_CYANURIC_ACID
+value	40	triazine_chloro	1	35;40	0	FALSE	-1	${EDESIGNER_QUERIES}/triazine_chloro.qry	TRIAZINE_MONOCHLORO	TRIAZINE_MONOCHLORO	NAS_ELECTROPHILE	_CYANURIC_ACID
+value	41	calc_AMINES_AROMATIC_SECONDARY_1	1	3;18;20;21;35;25;22;23;27;36;37;24;11;39;41	0	TRUE	0	${EDESIGNER_QUERIES}/amines_aromatic_secondary_1.qry;${EDESIGNER_QUERIES}/o_nitro_sec_aniline.qry;${EDESIGNER_QUERIES}/o_iodo_sec_aniline.qry	AMINES_SECONDARY	AMINES	NUCLEOPHILE	TERT_ANILINE_BOC
+value	42	sec_boc	1	16;17;42;43	2	TRUE	-7	${EDESIGNER_QUERIES}/sec_boc.proto
+value	43	tert_boc	1	16;17;42;43	2	TRUE	-7	${EDESIGNER_QUERIES}/tert_boc.proto
+value	44	alcohols_primary	1	43	0	TRUE	0	${EDESIGNER_QUERIES}/alcohols_primary.qry	alcohols	alcohols	ELECTROPHILE

@@ -1,0 +1,11 @@
+name: "prepare_amines-primary_as_electrophile"
+scaffold {
+  id: 0
+  query_file:"${EDESIGNER_QUERIES}/amines_primary.proto"
+  remove_atom: 0
+  isotope {
+  atom: 1
+  isotope: $isotope_1
+  }
+}
+

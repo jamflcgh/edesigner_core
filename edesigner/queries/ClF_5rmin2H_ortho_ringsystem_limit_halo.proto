@@ -1,0 +1,18 @@
+name: "Cl/F_2H_orth_to1N"
+query {
+  name: "Cl/F -> 2HetAtom"
+  smarts: "[Cl,F]-[/IWgid8c].[/IWgid8n].[/IWgid8a]"
+  unique_embeddings_only: true
+  one_embedding_per_start_atom: true
+  ring_system_specifier {
+    base {
+      set_global_id: 8
+      environment: "na-[F,Cl]&&n&&[n,o,s]&&1a-[F,Cl]"
+      environment_can_match_in_ring_atoms: true
+      min_heteroatom_count: 2
+    }
+    max_rings_in_system: 2
+    non_aromatic_ring_count: 0
+    max_degree_of_fusion: 1
+  }
+}

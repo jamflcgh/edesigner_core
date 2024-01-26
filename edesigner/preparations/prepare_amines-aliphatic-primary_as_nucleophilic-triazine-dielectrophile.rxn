@@ -1,0 +1,15 @@
+(0 Reaction
+  (A C Comment "prepare_amines-aliphatic-primary_as_nucleophilic-triazine-dielectrophile")
+  (0 Scaffold
+    (A C query_file "${EDESIGNER_QUERIES}/amines_aliphatic_primary.qry")
+    (A I isotope (0 $isotope_1))
+  )
+  (1 Sidechain
+    (A C smiles "c1ncncn1")
+    (A C smarts "c1ncncn1")
+    (A I isotope (2 $isotope_2))
+    (A I isotope (4 $isotope_3))
+    (A I join (0 0 1))
+  )
+)
+

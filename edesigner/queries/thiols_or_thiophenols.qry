@@ -1,0 +1,15 @@
+(0 Composite_Query
+  (A I version 2)
+  (A C Comment "thiols_or_thiophenols")
+  (A I one_embedding_per_start_atom 1)
+  (0 Query
+    (A I version 2)
+    (A C smarts "[0SD1H][CT1X4][#6]")
+  )
+  (1 Query
+    (A I version 2)
+    (A C smarts "[0SD1H]-a")
+  )
+)
+
+

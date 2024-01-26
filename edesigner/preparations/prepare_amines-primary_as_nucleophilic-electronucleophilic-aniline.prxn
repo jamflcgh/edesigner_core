@@ -1,0 +1,37 @@
+name: "prepare_amines-primary_as_nucleophilic-electronucleophilic-aniline"
+scaffold {
+  id: 0
+  query_file:"${EDESIGNER_QUERIES}/amines_primary.proto"
+  isotope {
+  atom: 0
+  isotope: $isotope_1
+  }
+}
+sidechain {
+  id: 1
+  reagent: "[CH](=O)c1cccc([NH2])c1"
+  smarts: "[CH](=O)c1cccc([NH2])c1"
+  isotope {
+    atom: 5
+    isotope: $isotope_2
+  }
+  isotope {
+    atom: 7
+    isotope: $isotope_3
+  }
+  join {
+    c1 {
+      component: 0
+      atom: 0
+    }
+    c2 {
+      component: 1
+      atom: 0
+    }
+    btype: SS_SINGLE_BOND
+  }
+}
+
+
+
+

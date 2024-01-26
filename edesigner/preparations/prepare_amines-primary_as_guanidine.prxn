@@ -1,0 +1,33 @@
+name: "prepare_amines-primary_as_guanidine"
+scaffold {
+  id: 0
+  query_file:"${EDESIGNER_QUERIES}/amines_primary.proto"
+  isotope {
+  atom: 0
+  isotope: $isotope_1
+  }
+}
+sidechain {
+  id: 1
+  reagent: "[NH]=[CH]-[NH2]"
+  smarts: "[NH]=[CH]-[NH2]"
+  isotope {
+    atom: 0
+    isotope: $isotope_2
+  }
+  isotope {
+    atom: 2
+    isotope: $isotope_3
+  }
+  join {
+    c1 {
+      component: 0
+      atom: 0
+    }
+    c2 {
+      component: 1
+      atom: 1
+    }
+    btype: SS_SINGLE_BOND
+  }
+}

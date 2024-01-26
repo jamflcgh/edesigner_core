@@ -1,0 +1,6 @@
+(0 Query
+  (A I Version 2)
+  (A C Comment "triazine_chloro")
+  (A I one_embedding_per_start_atom 1)
+  (A C smarts "Clc1nc([H,C,N,O,S])nnc([H,C,N,O,S])n1")
+)

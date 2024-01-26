@@ -1,0 +1,27 @@
+name: "X.X.X_Triazine_Dichloro_FROM_boc_AND_Null"
+scaffold {
+  id: 0
+  query_file: "${EDESIGNER_QUERIES}/all_boc.proto"
+  break_bond {
+    a1: 0
+    a2: 1
+  }
+  remove_fragment: 1
+}
+sidechain {
+  id: 1
+  reagent: "c1nc(Cl)nc(Cl)n1"
+  smarts: "c1nc(Cl)nc(Cl)n1"
+  join {
+    c1 {
+    component: 0
+    atom: 0
+    }
+    c2 {
+      component: 1
+      atom: 0
+    }
+  btype: SS_SINGLE_BOND
+  }
+}
+

@@ -1,0 +1,8 @@
+(0 Reaction
+  (A C Comment "boc_deprotection")
+  (0 Scaffold
+     (A C query_file "${EDESIGNER_QUERIES}/boc.qry")
+     (A I break_bond (0 1))
+     (A I remove_fragment 1)
+  )
+)
